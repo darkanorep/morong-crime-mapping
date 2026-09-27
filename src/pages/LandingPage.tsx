@@ -12,7 +12,7 @@ import {
 import { Link } from "react-router-dom";
 import { Reveal } from "@/components/common/Reveal";
 import { BackToTop } from "@/components/common/BackToTop";
-import morongHeader from "@/assets/morong.jpg";
+import morongHeader from "@/assets/morong.png";
 import morongCrimeLogo from "@/assets/morong-crime-logo.png";
 import poblacionLogo from "../assets/barangays/poblacion.png";
 import mabayoLogo from "../assets/barangays/maboyo.png";

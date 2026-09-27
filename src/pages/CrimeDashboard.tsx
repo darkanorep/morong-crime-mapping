@@ -22,7 +22,7 @@ import { DataMethodology } from "@/components/dashboard/DataMethodology";
 
 import crimesData from "@/data/crimes.json";
 import barangays from "@/data/barangays.json";
-import morongHeader from "@/assets/morong.jpg";
+import morongHeader from "@/assets/morong.png";
 import morongCrimeLogo from "@/assets/morong-crime-logo.png";
 import poblacionLogo from "../assets/barangays/poblacion.png";
 import mabayoLogo from "../assets/barangays/maboyo.png";
