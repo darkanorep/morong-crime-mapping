@@ -83,11 +83,15 @@
       "id": "homicide",
       "name": "Homicide",
       "category": "index-crime",
-      "yearly": { "2024": 0, "2025": 2, "2026": 1 },
+      "yearly": {
+        "2024": 0,
+        "2025": 2,
+        "2026": 1
+      },
       "barangays": {
         "poblacion": 1,
         "mabayo": 0,
-        "binaritan": 3,
+        "binaritan": 2,
         "sabang": 0,
         "nagbalayong": 0
       },
