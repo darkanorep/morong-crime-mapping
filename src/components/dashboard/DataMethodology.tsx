@@ -263,67 +263,40 @@ export function DataMethodology({ open, onOpenChange }: DataMethodologyProps) {
           ================================= */}
 
           <section className="border-t border-[#eadadd] pt-5">
-            <div className="mb-3 flex items-center gap-2">
-              <div className="bhc-maroon-icon flex h-8 w-8 shrink-0 items-center justify-center rounded-lg">
-                <FileText className="h-4 w-4" />
+            {/* ==================================
+    Dataset Consistency
+================================== */}
+
+            <div className="border-t border-[#eadadd] pt-6">
+              <div className="flex items-start gap-3">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#f8edef] text-[#7a1f2b]">
+                  <Database className="h-5 w-5" />
+                </div>
+
+                <div>
+                  <h3 className="font-bold text-[#681923]">
+                    Dataset Consistency
+                  </h3>
+
+                  <p className="mt-1 text-sm text-[#766064]">
+                    248 recorded cases
+                  </p>
+                </div>
               </div>
 
-              <div>
-                <h3 className="text-sm font-semibold text-primary">
-                  Why Some Totals Differ
-                </h3>
-
-                <p className="text-[10px] text-muted-foreground sm:text-xs">
-                  248 versus 249
+              <div className="mt-5 rounded-2xl border border-[#eadadd] bg-[#fffafa] p-5 sm:p-6">
+                <p className="text-sm leading-7 text-[#766064]">
+                  The loaded dataset contains{" "}
+                  <span className="font-semibold text-[#681923]">
+                    248 recorded cases
+                  </span>
+                  . The barangay-level values also sum to{" "}
+                  <span className="font-semibold text-[#681923]">
+                    248 cases
+                  </span>{" "}
+                  across Poblacion, Mabayo, Binaritan, Sabang, and Nagbalayong.
                 </p>
               </div>
-            </div>
-
-            {/* Comparison */}
-
-            <div className="mb-3 grid grid-cols-2 gap-2 sm:gap-3">
-              <div className="rounded-xl border border-[#eadadd] bg-[#fffafa] p-3 sm:p-4">
-                <p className="text-[10px] font-medium text-muted-foreground sm:text-xs">
-                  Reported crime totals
-                </p>
-
-                <p className="mt-1 text-2xl font-bold text-primary sm:text-3xl">
-                  248
-                </p>
-
-                <p className="mt-1 text-[10px] text-muted-foreground sm:text-xs">
-                  Loaded Cases
-                </p>
-              </div>
-
-              <div className="rounded-xl border border-[#e5c56b] bg-[#fffaf0] p-3 sm:p-4">
-                <p className="text-[10px] font-medium text-muted-foreground sm:text-xs">
-                  Barangay values
-                </p>
-
-                <p className="mt-1 text-2xl font-bold text-[#8b5b08] sm:text-3xl">
-                  249
-                </p>
-
-                <p className="mt-1 text-[10px] text-muted-foreground sm:text-xs">
-                  Sum across barangays
-                </p>
-              </div>
-            </div>
-
-            <div className="rounded-xl border border-[#eadadd] bg-white p-3 sm:p-4">
-              <p className="text-sm leading-6 text-muted-foreground sm:leading-7">
-                Summing the reported total for every crime produces 248 loaded
-                cases. Summing all barangay values produces 249 because of the
-                one-case Homicide discrepancy described above.
-              </p>
-
-              <p className="mt-3 text-sm leading-6 text-muted-foreground sm:leading-7">
-                For this reason, the dashboard&apos;s overall Loaded Cases
-                statistic is calculated from the reported crime totals, while
-                barangay cards and map values are calculated from the
-                source&apos;s barangay figures.
-              </p>
             </div>
           </section>
 
