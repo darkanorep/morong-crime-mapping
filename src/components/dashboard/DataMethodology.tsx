@@ -2,7 +2,6 @@ import {
   AlertTriangle,
   BookOpen,
   Database,
-  FileText,
   Info,
   Map,
   Scale,
