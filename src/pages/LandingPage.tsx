@@ -77,6 +77,21 @@ const features = [
   },
 ];
 
+const researchers = [
+  {
+    name: "TALASTAS, PRINCESS PAULYN A.",
+    initials: "PT",
+  },
+  {
+    name: "BARRAMEDA, DAISY KAYLE D.",
+    initials: "DB",
+  },
+  {
+    name: "PERONA, MAVERICK H.",
+    initials: "MP",
+  },
+];
+
 /* ==================================
    Landing Page
 ================================== */
@@ -593,6 +608,91 @@ group-hover:scale-110
               Open Crime Dashboard
               <ArrowRight className="h-4 w-4 shrink-0" />
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ==================================
+    Research Team
+================================== */}
+
+      <section className="border-t border-[#eadadd] bg-white px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+        <div className="mx-auto w-full max-w-[1200px]">
+          {/* Heading */}
+          <Reveal>
+            <div className="text-center">
+              <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#8b5b08]">
+                Research Team
+              </p>
+
+              <h2 className="mt-2 text-2xl font-bold tracking-tight text-[#681923] sm:text-3xl">
+                Meet the Researchers
+              </h2>
+
+              <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-[#766064] sm:text-base">
+                The researchers behind the development of the Morong Crime
+                Mapping system.
+              </p>
+            </div>
+          </Reveal>
+
+          {/* Researchers */}
+          <div className="mx-auto mt-10 grid max-w-4xl gap-4 md:grid-cols-3">
+            {researchers.map((researcher, index) => (
+              <Reveal
+                key={researcher.name}
+                delay={index * 100}
+                className="h-full"
+              >
+                <div
+                  className="
+              group flex h-full flex-col items-center
+              rounded-2xl
+              border border-[#eadadd]
+              bg-[#fffafa]
+              px-5 py-8
+              text-center
+              shadow-[0_8px_24px_rgba(90,25,35,0.04)]
+              transition-all duration-300
+              hover:-translate-y-1
+              hover:border-[#d3a337]
+              hover:bg-[#fffaf0]
+              hover:shadow-[0_16px_35px_rgba(90,25,35,0.10)]
+            "
+                >
+                  {/* Initials */}
+                  <div
+                    className="
+                flex h-20 w-20
+                items-center justify-center
+                rounded-full
+                border-4 border-[#f8e8ba]
+                bg-[#681923]
+                text-xl font-bold
+                text-[#f3d77d]
+                shadow-md
+                transition-transform duration-300
+                group-hover:scale-105
+              "
+                  >
+                    {researcher.initials}
+                  </div>
+
+                  {/* Gold accent */}
+                  <div className="mt-5 h-[2px] w-8 rounded-full bg-[#d3a337] transition-all duration-300 group-hover:w-12" />
+
+                  {/* Name */}
+                  <h3 className="mt-4 text-sm font-bold leading-6 text-[#681923] sm:text-base">
+                    {researcher.name}
+                  </h3>
+
+                  {/* Role */}
+                  <p className="mt-1 text-xs font-medium uppercase tracking-[0.12em] text-[#9a777c]">
+                    Researcher
+                  </p>
+                </div>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
