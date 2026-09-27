@@ -1,0 +1,223 @@
+{
+  "robbery": {
+    "definition": "Robbery generally involves taking personal property belonging to another, with intent to gain, through violence or intimidation against a person or by using force upon things.",
+    "legalBasis": "Revised Penal Code",
+    "legalProvision": "Article 293 — Who are guilty of robbery"
+  },
+
+  "robbery-with-homicide": {
+    "definition": "Robbery with homicide is a special complex crime where homicide is committed by reason of or on the occasion of a robbery.",
+    "legalBasis": "Revised Penal Code",
+    "legalProvision": "Article 294(1) — Robbery with violence or intimidation of persons"
+  },
+
+  "theft": {
+    "definition": "Theft generally involves taking another person's personal property, with intent to gain and without the owner's consent, without violence or intimidation against persons or force upon things.",
+    "legalBasis": "Revised Penal Code",
+    "legalProvision": "Article 308 — Who are liable for theft"
+  },
+
+  "qualified-theft": {
+    "definition": "Qualified theft is theft committed under circumstances specifically identified by law that make the offense more serious, such as grave abuse of confidence or certain types of property or situations covered by the Code.",
+    "legalBasis": "Revised Penal Code",
+    "legalProvision": "Article 310 — Qualified theft"
+  },
+
+  "murder": {
+    "definition": "Murder is the unlawful killing of another person when accompanied by one or more qualifying circumstances specified by law, such as treachery, evident premeditation, or cruelty.",
+    "legalBasis": "Revised Penal Code",
+    "legalProvision": "Article 248 — Murder"
+  },
+
+  "homicide": {
+    "definition": "Homicide is the unlawful killing of another person that does not fall under parricide or murder and is not attended by the qualifying circumstances that would make the killing murder.",
+    "legalBasis": "Revised Penal Code",
+    "legalProvision": "Article 249 — Homicide"
+  },
+
+  "rape": {
+    "definition": "Rape covers sexual acts committed under circumstances defined by law, including through force, threat or intimidation, when the offended party is deprived of reason or otherwise unconscious, through fraudulent machination or grave abuse of authority, and circumstances involving victims below the statutory age of sexual consent.",
+    "legalBasis": "Revised Penal Code, as amended by Republic Act Nos. 8353 and 11648",
+    "legalProvision": "Article 266-A — Rape; when and how committed"
+  },
+
+  "attempted-homicide": {
+    "definition": "Attempted homicide generally applies when a person begins committing acts intended to unlawfully kill another but does not perform all the acts of execution necessary to produce the intended killing because of a cause or accident other than voluntary desistance.",
+    "legalBasis": "Revised Penal Code",
+    "legalProvision": "Articles 6 and 249 — Attempted felony and Homicide"
+  },
+
+  "frustrated-homicide": {
+    "definition": "Frustrated homicide generally applies when all acts of execution that would ordinarily cause death are performed, but the victim does not die because of causes independent of the offender's will.",
+    "legalBasis": "Revised Penal Code",
+    "legalProvision": "Articles 6, 249 and 250 — Frustrated felony and Homicide"
+  },
+
+  "grave-threats": {
+    "definition": "Grave threats generally involve threatening another person, or that person's family, with a wrong amounting to a crime against the person, honor or property.",
+    "legalBasis": "Revised Penal Code",
+    "legalProvision": "Article 282 — Grave threats"
+  },
+
+  "light-threats": {
+    "definition": "Light threats generally involve threatening to commit a wrong that does not constitute a crime under the circumstances specified by the Revised Penal Code.",
+    "legalBasis": "Revised Penal Code",
+    "legalProvision": "Article 283 — Light threats"
+  },
+
+  "unjust-vexation": {
+    "definition": "Unjust vexation is covered by the Revised Penal Code provision on other coercions or unjust vexations and generally concerns conduct that unjustifiably annoys, irritates, torments or causes distress to another without constituting a more serious offense.",
+    "legalBasis": "Revised Penal Code, as amended by Republic Act No. 10951",
+    "legalProvision": "Article 287 — Light coercions and unjust vexations"
+  },
+
+  "cockfighting": {
+    "definition": "This category covers violations of Philippine laws regulating cockfighting, including unauthorized cockfights, prohibited venues or schedules, and related unlawful activities.",
+    "legalBasis": "Presidential Decree No. 449, as amended and supplemented by applicable gambling laws",
+    "legalProvision": "Cockfighting Law of 1974"
+  },
+
+  "acts-of-lasciviousness": {
+    "definition": "Acts of lasciviousness covers prohibited sexual or lewd acts committed upon another person under circumstances defined by the Revised Penal Code and related amendments.",
+    "legalBasis": "Revised Penal Code, as amended",
+    "legalProvision": "Article 336 — Acts of lasciviousness"
+  },
+
+  "alarms-and-scandal": {
+    "definition": "Alarms and scandal covers specified acts that disturb public peace or create alarm or danger in public places, as provided by the Revised Penal Code.",
+    "legalBasis": "Revised Penal Code",
+    "legalProvision": "Article 155 — Alarms and scandals"
+  },
+
+  "anti-gambling-law": {
+    "definition": "This category covers participation in or involvement with illegal or unauthorized gambling activities prohibited under Philippine law.",
+    "legalBasis": "Presidential Decree No. 1602",
+    "legalProvision": "Prescribing Stiffer Penalties on Illegal Gambling"
+  },
+
+  "malicious-mischief": {
+    "definition": "Malicious mischief generally involves deliberately causing damage to the property of another when the act does not fall within another property offense specifically covered by the preceding provisions of the Revised Penal Code.",
+    "legalBasis": "Revised Penal Code",
+    "legalProvision": "Article 327 — Who are liable for malicious mischief"
+  },
+
+  "dangerous-drugs": {
+    "definition": "This category covers unlawful acts involving dangerous drugs and controlled precursors or essential chemicals, including offenses involving illegal importation, sale, distribution, manufacture, possession, transportation and use when applicable under the law.",
+    "legalBasis": "Republic Act No. 9165",
+    "legalProvision": "Comprehensive Dangerous Drugs Act of 2002"
+  },
+
+  "resistance-disobedience-person-authority": {
+    "definition": "This offense generally involves resisting or seriously disobeying a person in authority or an agent of a person in authority while that person or agent is performing official duties, when the conduct does not constitute a more serious assault offense.",
+    "legalBasis": "Revised Penal Code, as amended by Republic Act No. 10951",
+    "legalProvision": "Article 151 — Resistance and disobedience to a person in authority or the agents of such person"
+  },
+
+  "violence-against-women-and-their-children": {
+    "definition": "Violence against women and their children covers acts or a series of acts against a woman covered by the law or her child that result in or are likely to result in physical, sexual or psychological harm or suffering, or economic abuse, including specified threats, coercion, harassment and deprivation of liberty.",
+    "legalBasis": "Republic Act No. 9262",
+    "legalProvision": "Anti-Violence Against Women and Their Children Act of 2004"
+  },
+
+  "photo-and-video-voyeurism": {
+    "definition": "Photo or video voyeurism includes prohibited non-consensual recording of sexual activity or private areas where a person has a reasonable expectation of privacy, as well as specified copying, distribution, publication, broadcasting or exhibition of such recordings.",
+    "legalBasis": "Republic Act No. 9995",
+    "legalProvision": "Anti-Photo and Video Voyeurism Act of 2009"
+  },
+
+  "comprehensive-law-firearms-ammunition": {
+    "definition": "This category covers offenses under Philippine firearms law, including unlawful acquisition or possession of firearms, ammunition or regulated firearm components and other prohibited activities defined by the statute.",
+    "legalBasis": "Republic Act No. 10591",
+    "legalProvision": "Comprehensive Firearms and Ammunition Regulation Act"
+  },
+
+  "qualified-trespass-to-dwelling": {
+    "definition": "Qualified trespass to dwelling generally occurs when a private person enters another person's dwelling against the latter's will, subject to the exceptions and circumstances provided by law.",
+    "legalBasis": "Revised Penal Code, as amended by Republic Act No. 10951",
+    "legalProvision": "Article 280 — Qualified trespass to dwelling"
+  },
+
+  "anti-electricity-electric-transmission-pilferage": {
+    "definition": "This category covers unlawful acts involving the illegal use or theft of electricity and the theft or pilferage of electric power transmission lines and materials.",
+    "legalBasis": "Republic Act No. 7832",
+    "legalProvision": "Anti-Electricity and Electric Transmission Lines/Materials Pilferage Act of 1994"
+  },
+
+  "illegal-possession-bladed-pointed-blunt-weapons": {
+    "definition": "This source category concerns the carrying of bladed, pointed or blunt weapons outside one's residence under the circumstances governed by Philippine weapons law. Application of these provisions depends on the circumstances and applicable jurisprudence.",
+    "legalBasis": "Presidential Decree No. 9, as amended by Batas Pambansa Blg. 6",
+    "legalProvision": "Paragraph 3 / Section 1 — Bladed, pointed or blunt weapons"
+  },
+
+  "direct-assaults": {
+    "definition": "Direct assault generally includes attacking, employing force, seriously intimidating or seriously resisting a person in authority or an agent of a person in authority while engaged in official duties, or on the occasion of those duties, under circumstances defined by law.",
+    "legalBasis": "Revised Penal Code",
+    "legalProvision": "Article 148 — Direct assaults"
+  },
+
+  "land-transportation-and-traffic-code": {
+    "definition": "This category covers violations falling under the Philippine law governing motor vehicle registration and operation, driver licensing, traffic rules and related land transportation requirements.",
+    "legalBasis": "Republic Act No. 4136",
+    "legalProvision": "Land Transportation and Traffic Code"
+  },
+
+  "omnibus-election-code": {
+    "definition": "This category covers election-related acts prohibited or regulated by Philippine election law. The source dataset does not identify the specific election offense or section involved.",
+    "legalBasis": "Batas Pambansa Blg. 881",
+    "legalProvision": "Omnibus Election Code of the Philippines"
+  },
+
+  "other-forms-of-trespass": {
+    "definition": "Other forms of trespass generally involve entering the closed premises or fenced estate of another while uninhabited, where the prohibition to enter is manifest and permission from the owner or caretaker has not been obtained.",
+    "legalBasis": "Revised Penal Code, as amended by Republic Act No. 10951",
+    "legalProvision": "Article 281 — Other forms of trespass"
+  },
+
+  "qualified-seduction": {
+    "definition": "Qualified seduction concerns sexual conduct involving a minor sixteen years of age or older but under eighteen under the relationships or circumstances specified by law.",
+    "legalBasis": "Revised Penal Code, as amended by Republic Act No. 11648",
+    "legalProvision": "Article 337 — Qualified seduction"
+  },
+
+  "slight-physical-injuries-and-maltreatment": {
+    "definition": "This offense covers specified minor physical injuries and maltreatment, including injuries resulting in short periods of incapacity or medical attendance and certain acts of ill-treatment without injury.",
+    "legalBasis": "Revised Penal Code, as amended by Republic Act No. 10951",
+    "legalProvision": "Article 266 — Slight physical injuries and maltreatment"
+  },
+
+  "special-protection-children": {
+    "definition": "This category covers offenses under the law providing special protection to children from abuse, neglect, cruelty, exploitation, discrimination and other conditions prejudicial to their development.",
+    "legalBasis": "Republic Act No. 7610, as amended",
+    "legalProvision": "Special Protection of Children Against Abuse, Exploitation and Discrimination Act"
+  },
+
+  "estafa": {
+    "definition": "Estafa or swindling generally involves defrauding another through abuse of confidence, false pretenses, fraudulent acts or other fraudulent means specifically identified by law.",
+    "legalBasis": "Revised Penal Code, as amended by Republic Act No. 10951",
+    "legalProvision": "Article 315 — Swindling (Estafa)"
+  },
+
+  "reckless-imprudence-damage-to-property": {
+    "definition": "This category covers property damage resulting from reckless imprudence, meaning a voluntary act or omission without malice from which material damage results because of an inexcusable lack of precaution under the circumstances.",
+    "legalBasis": "Revised Penal Code, as amended",
+    "legalProvision": "Article 365 — Imprudence and negligence"
+  },
+
+  "reckless-imprudence-physical-injury": {
+    "definition": "This category covers physical injuries caused through reckless imprudence rather than intentional violence, where the injury results from an inexcusable lack of precaution under the circumstances.",
+    "legalBasis": "Revised Penal Code, as amended",
+    "legalProvision": "Article 365 — Imprudence and negligence"
+  },
+
+  "reckless-imprudence-multiple-physical-injury": {
+    "definition": "This source category refers to incidents in which reckless imprudence results in physical injuries to multiple persons. The underlying criminal negligence is governed by Article 365.",
+    "legalBasis": "Revised Penal Code, as amended",
+    "legalProvision": "Article 365 — Imprudence and negligence"
+  },
+
+  "reckless-imprudence-homicide": {
+    "definition": "This category covers a death caused through reckless imprudence rather than an intentional killing, where the result arises from an inexcusable lack of precaution under the circumstances.",
+    "legalBasis": "Revised Penal Code, as amended",
+    "legalProvision": "Article 365 — Imprudence and negligence"
+  }
+}

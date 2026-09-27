@@ -1,0 +1,533 @@
+{
+  "reportingPeriod": {
+    "from": 2024,
+    "to": 2026
+  },
+  "location": {
+    "municipality": "Morong",
+    "province": "Bataan",
+    "country": "Philippines"
+  },
+  "crimes": [
+    {
+      "id": "robbery",
+      "name": "Robbery",
+      "category": "index-crime",
+      "yearly": { "2024": 1, "2025": 2, "2026": 1 },
+      "barangays": {
+        "poblacion": 2,
+        "mabayo": 2,
+        "binaritan": 0,
+        "sabang": 0,
+        "nagbalayong": 0
+      },
+      "total": 4
+    },
+    {
+      "id": "robbery-with-homicide",
+      "name": "Robbery with Homicide",
+      "category": "index-crime",
+      "yearly": { "2024": 0, "2025": 1, "2026": 0 },
+      "barangays": {
+        "poblacion": 0,
+        "mabayo": 0,
+        "binaritan": 0,
+        "sabang": 1,
+        "nagbalayong": 0
+      },
+      "total": 1
+    },
+    {
+      "id": "theft",
+      "name": "Theft",
+      "category": "index-crime",
+      "yearly": { "2024": 1, "2025": 3, "2026": 3 },
+      "barangays": {
+        "poblacion": 3,
+        "mabayo": 3,
+        "binaritan": 0,
+        "sabang": 1,
+        "nagbalayong": 0
+      },
+      "total": 7
+    },
+    {
+      "id": "qualified-theft",
+      "name": "Qualified Theft",
+      "category": "index-crime",
+      "yearly": { "2024": 0, "2025": 1, "2026": 0 },
+      "barangays": {
+        "poblacion": 0,
+        "mabayo": 1,
+        "binaritan": 0,
+        "sabang": 0,
+        "nagbalayong": 0
+      },
+      "total": 1
+    },
+    {
+      "id": "murder",
+      "name": "Murder",
+      "category": "index-crime",
+      "yearly": { "2024": 0, "2025": 2, "2026": 0 },
+      "barangays": {
+        "poblacion": 0,
+        "mabayo": 0,
+        "binaritan": 0,
+        "sabang": 2,
+        "nagbalayong": 0
+      },
+      "total": 2
+    },
+    {
+      "id": "homicide",
+      "name": "Homicide",
+      "category": "index-crime",
+      "yearly": { "2024": 0, "2025": 2, "2026": 1 },
+      "barangays": {
+        "poblacion": 1,
+        "mabayo": 0,
+        "binaritan": 3,
+        "sabang": 0,
+        "nagbalayong": 0
+      },
+      "total": 3
+    },
+    {
+      "id": "rape",
+      "name": "Rape",
+      "category": "index-crime",
+      "yearly": { "2024": 0, "2025": 1, "2026": 1 },
+      "barangays": {
+        "poblacion": 0,
+        "mabayo": 1,
+        "binaritan": 0,
+        "sabang": 0,
+        "nagbalayong": 1
+      },
+      "total": 2
+    },
+
+    {
+      "id": "attempted-homicide",
+      "name": "Attempted Homicide",
+      "category": "non-index-crime",
+      "yearly": { "2024": 5, "2025": 2, "2026": 0 },
+      "barangays": {
+        "poblacion": 1,
+        "mabayo": 1,
+        "binaritan": 3,
+        "sabang": 2,
+        "nagbalayong": 0
+      },
+      "total": 7
+    },
+    {
+      "id": "frustrated-homicide",
+      "name": "Frustrated Homicide",
+      "category": "non-index-crime",
+      "yearly": { "2024": 0, "2025": 3, "2026": 2 },
+      "barangays": {
+        "poblacion": 1,
+        "mabayo": 1,
+        "binaritan": 1,
+        "sabang": 1,
+        "nagbalayong": 1
+      },
+      "total": 5
+    },
+    {
+      "id": "grave-threats",
+      "name": "Grave Threats",
+      "category": "non-index-crime",
+      "yearly": { "2024": 4, "2025": 3, "2026": 0 },
+      "barangays": {
+        "poblacion": 2,
+        "mabayo": 0,
+        "binaritan": 3,
+        "sabang": 2,
+        "nagbalayong": 0
+      },
+      "total": 7
+    },
+    {
+      "id": "light-threats",
+      "name": "Light Threats",
+      "category": "non-index-crime",
+      "yearly": { "2024": 1, "2025": 0, "2026": 0 },
+      "barangays": {
+        "poblacion": 1,
+        "mabayo": 0,
+        "binaritan": 0,
+        "sabang": 0,
+        "nagbalayong": 0
+      },
+      "total": 1
+    },
+    {
+      "id": "unjust-vexation",
+      "name": "Unjust Vexation",
+      "category": "non-index-crime",
+      "yearly": { "2024": 1, "2025": 1, "2026": 0 },
+      "barangays": {
+        "poblacion": 0,
+        "mabayo": 0,
+        "binaritan": 0,
+        "sabang": 2,
+        "nagbalayong": 0
+      },
+      "total": 2
+    },
+    {
+      "id": "cockfighting",
+      "name": "Cockfighting",
+      "category": "non-index-crime",
+      "yearly": { "2024": 4, "2025": 1, "2026": 0 },
+      "barangays": {
+        "poblacion": 0,
+        "mabayo": 2,
+        "binaritan": 1,
+        "sabang": 1,
+        "nagbalayong": 1
+      },
+      "total": 5
+    },
+    {
+      "id": "acts-of-lasciviousness",
+      "name": "Acts of Lasciviousness",
+      "category": "non-index-crime",
+      "yearly": { "2024": 2, "2025": 5, "2026": 0 },
+      "barangays": {
+        "poblacion": 2,
+        "mabayo": 1,
+        "binaritan": 2,
+        "sabang": 1,
+        "nagbalayong": 1
+      },
+      "total": 7
+    },
+    {
+      "id": "alarms-and-scandal",
+      "name": "Alarms and Scandal",
+      "category": "non-index-crime",
+      "yearly": { "2024": 2, "2025": 2, "2026": 0 },
+      "barangays": {
+        "poblacion": 2,
+        "mabayo": 0,
+        "binaritan": 2,
+        "sabang": 0,
+        "nagbalayong": 0
+      },
+      "total": 4
+    },
+    {
+      "id": "anti-gambling-law",
+      "name": "Anti-Gambling Law",
+      "category": "non-index-crime",
+      "yearly": { "2024": 4, "2025": 1, "2026": 0 },
+      "barangays": {
+        "poblacion": 1,
+        "mabayo": 0,
+        "binaritan": 1,
+        "sabang": 2,
+        "nagbalayong": 1
+      },
+      "total": 5
+    },
+    {
+      "id": "malicious-mischief",
+      "name": "Malicious Mischief",
+      "category": "non-index-crime",
+      "yearly": { "2024": 1, "2025": 2, "2026": 0 },
+      "barangays": {
+        "poblacion": 2,
+        "mabayo": 0,
+        "binaritan": 1,
+        "sabang": 0,
+        "nagbalayong": 0
+      },
+      "total": 3
+    },
+    {
+      "id": "dangerous-drugs",
+      "name": "Comprehensive Dangerous Drugs",
+      "category": "non-index-crime",
+      "yearly": { "2024": 22, "2025": 43, "2026": 24 },
+      "barangays": {
+        "poblacion": 20,
+        "mabayo": 11,
+        "binaritan": 25,
+        "sabang": 25,
+        "nagbalayong": 8
+      },
+      "total": 89
+    },
+    {
+      "id": "resistance-disobedience-person-authority",
+      "name": "Resistance and Disobedience to a Person in Authority",
+      "category": "non-index-crime",
+      "yearly": { "2024": 2, "2025": 0, "2026": 0 },
+      "barangays": {
+        "poblacion": 2,
+        "mabayo": 0,
+        "binaritan": 0,
+        "sabang": 0,
+        "nagbalayong": 0
+      },
+      "total": 2
+    },
+    {
+      "id": "violence-against-women-and-their-children",
+      "name": "Violence Against Women and Their Children",
+      "category": "non-index-crime",
+      "yearly": { "2024": 2, "2025": 4, "2026": 2 },
+      "barangays": {
+        "poblacion": 2,
+        "mabayo": 3,
+        "binaritan": 1,
+        "sabang": 2,
+        "nagbalayong": 0
+      },
+      "total": 8
+    },
+    {
+      "id": "photo-and-video-voyeurism",
+      "name": "Photo and Video Voyeurism",
+      "category": "non-index-crime",
+      "yearly": { "2024": 1, "2025": 1, "2026": 0 },
+      "barangays": {
+        "poblacion": 1,
+        "mabayo": 0,
+        "binaritan": 1,
+        "sabang": 0,
+        "nagbalayong": 0
+      },
+      "total": 2
+    },
+    {
+      "id": "comprehensive-law-firearms-ammunition",
+      "name": "Comprehensive Law on Firearms and Ammunition",
+      "category": "non-index-crime",
+      "yearly": { "2024": 5, "2025": 11, "2026": 2 },
+      "barangays": {
+        "poblacion": 3,
+        "mabayo": 3,
+        "binaritan": 6,
+        "sabang": 4,
+        "nagbalayong": 2
+      },
+      "total": 18
+    },
+    {
+      "id": "qualified-trespass-to-dwelling",
+      "name": "Qualified Trespass to Dwelling",
+      "category": "non-index-crime",
+      "yearly": { "2024": 2, "2025": 1, "2026": 0 },
+      "barangays": {
+        "poblacion": 0,
+        "mabayo": 0,
+        "binaritan": 2,
+        "sabang": 1,
+        "nagbalayong": 0
+      },
+      "total": 3
+    },
+    {
+      "id": "anti-electricity-electric-transmission-pilferage",
+      "name": "Anti-Electricity and Electric Transmission Lines/Materials Pilferage",
+      "category": "non-index-crime",
+      "yearly": { "2024": 0, "2025": 1, "2026": 1 },
+      "barangays": {
+        "poblacion": 1,
+        "mabayo": 1,
+        "binaritan": 0,
+        "sabang": 0,
+        "nagbalayong": 0
+      },
+      "total": 2
+    },
+    {
+      "id": "illegal-possession-bladed-pointed-blunt-weapons",
+      "name": "Illegal Possession of Bladed, Pointed or Blunt Weapons",
+      "category": "non-index-crime",
+      "yearly": { "2024": 2, "2025": 0, "2026": 0 },
+      "barangays": {
+        "poblacion": 1,
+        "mabayo": 0,
+        "binaritan": 1,
+        "sabang": 0,
+        "nagbalayong": 0
+      },
+      "total": 2
+    },
+    {
+      "id": "direct-assaults",
+      "name": "Direct Assaults",
+      "category": "non-index-crime",
+      "yearly": { "2024": 0, "2025": 1, "2026": 0 },
+      "barangays": {
+        "poblacion": 0,
+        "mabayo": 1,
+        "binaritan": 0,
+        "sabang": 0,
+        "nagbalayong": 0
+      },
+      "total": 1
+    },
+    {
+      "id": "land-transportation-and-traffic-code",
+      "name": "Land Transportation and Traffic Code",
+      "category": "non-index-crime",
+      "yearly": { "2024": 0, "2025": 1, "2026": 0 },
+      "barangays": {
+        "poblacion": 0,
+        "mabayo": 0,
+        "binaritan": 0,
+        "sabang": 1,
+        "nagbalayong": 0
+      },
+      "total": 1
+    },
+    {
+      "id": "omnibus-election-code",
+      "name": "Omnibus Election Code of the Philippines",
+      "category": "non-index-crime",
+      "yearly": { "2024": 0, "2025": 4, "2026": 0 },
+      "barangays": {
+        "poblacion": 0,
+        "mabayo": 2,
+        "binaritan": 0,
+        "sabang": 2,
+        "nagbalayong": 0
+      },
+      "total": 4
+    },
+    {
+      "id": "other-forms-of-trespass",
+      "name": "Other Forms of Trespass",
+      "category": "non-index-crime",
+      "yearly": { "2024": 0, "2025": 1, "2026": 0 },
+      "barangays": {
+        "poblacion": 0,
+        "mabayo": 0,
+        "binaritan": 0,
+        "sabang": 1,
+        "nagbalayong": 0
+      },
+      "total": 1
+    },
+    {
+      "id": "qualified-seduction",
+      "name": "Qualified Seduction",
+      "category": "non-index-crime",
+      "yearly": { "2024": 0, "2025": 1, "2026": 0 },
+      "barangays": {
+        "poblacion": 0,
+        "mabayo": 0,
+        "binaritan": 0,
+        "sabang": 1,
+        "nagbalayong": 0
+      },
+      "total": 1
+    },
+    {
+      "id": "slight-physical-injuries-and-maltreatment",
+      "name": "Slight Physical Injuries and Maltreatment",
+      "category": "non-index-crime",
+      "yearly": { "2024": 0, "2025": 1, "2026": 0 },
+      "barangays": {
+        "poblacion": 1,
+        "mabayo": 0,
+        "binaritan": 0,
+        "sabang": 0,
+        "nagbalayong": 0
+      },
+      "total": 1
+    },
+    {
+      "id": "special-protection-children",
+      "name": "Special Protection of Children Against Child Abuse, Exploitation and Discrimination",
+      "category": "non-index-crime",
+      "yearly": { "2024": 0, "2025": 1, "2026": 0 },
+      "barangays": {
+        "poblacion": 0,
+        "mabayo": 0,
+        "binaritan": 0,
+        "sabang": 0,
+        "nagbalayong": 1
+      },
+      "total": 1
+    },
+    {
+      "id": "estafa",
+      "name": "Estafa",
+      "category": "non-index-crime",
+      "yearly": { "2024": 0, "2025": 2, "2026": 0 },
+      "barangays": {
+        "poblacion": 1,
+        "mabayo": 0,
+        "binaritan": 0,
+        "sabang": 1,
+        "nagbalayong": 0
+      },
+      "total": 2
+    },
+
+    {
+      "id": "reckless-imprudence-damage-to-property",
+      "name": "Reckless Imprudence Resulting to Damage to Property",
+      "category": "vehicular-accident",
+      "yearly": { "2024": 2, "2025": 12, "2026": 7 },
+      "barangays": {
+        "poblacion": 2,
+        "mabayo": 9,
+        "binaritan": 1,
+        "sabang": 6,
+        "nagbalayong": 3
+      },
+      "total": 21
+    },
+    {
+      "id": "reckless-imprudence-physical-injury",
+      "name": "Reckless Imprudence Resulting to Physical Injury",
+      "category": "vehicular-accident",
+      "yearly": { "2024": 2, "2025": 9, "2026": 7 },
+      "barangays": {
+        "poblacion": 4,
+        "mabayo": 4,
+        "binaritan": 2,
+        "sabang": 3,
+        "nagbalayong": 5
+      },
+      "total": 18
+    },
+    {
+      "id": "reckless-imprudence-multiple-physical-injury",
+      "name": "Reckless Imprudence Resulting to Multiple Physical Injury",
+      "category": "vehicular-accident",
+      "yearly": { "2024": 0, "2025": 1, "2026": 1 },
+      "barangays": {
+        "poblacion": 0,
+        "mabayo": 2,
+        "binaritan": 0,
+        "sabang": 0,
+        "nagbalayong": 0
+      },
+      "total": 2
+    },
+    {
+      "id": "reckless-imprudence-homicide",
+      "name": "Reckless Imprudence Resulting to Homicide",
+      "category": "vehicular-accident",
+      "yearly": { "2024": 1, "2025": 1, "2026": 1 },
+      "barangays": {
+        "poblacion": 0,
+        "mabayo": 1,
+        "binaritan": 1,
+        "sabang": 1,
+        "nagbalayong": 0
+      },
+      "total": 3
+    }
+  ]
+}

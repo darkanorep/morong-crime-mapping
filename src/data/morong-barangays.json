@@ -1,0 +1,398 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "ADM4_EN": "Binaritan",
+        "ADM4_PCODE": "PH0300808001",
+        "ADM4_REF": null,
+        "ADM3_EN": "Morong",
+        "ADM3_PCODE": "PH0300808",
+        "ADM2_EN": "Bataan",
+        "ADM2_PCODE": "PH03008",
+        "ADM1_EN": "Region III (Central Luzon)",
+        "ADM1_PCODE": "PH03",
+        "ADM0_EN": "Philippines (the)",
+        "ADM0_PCODE": "PH",
+        "date": "2022-11-09",
+        "validOn": "2023-11-06",
+        "validTo": null,
+        "Shape_Leng": 0.356937887845,
+        "Shape_Area": 0.00344361690744,
+        "AREA_SQKM": 41.0324701318,
+        "psgc_id": "PH0300808001",
+        "psgc_code": "0300808001",
+        "psgc_name": "Binaritan",
+        "psgc_status": "matched",
+        "match_confidence": 1,
+        "psgc_type": "barangay",
+        "match_method": "exact",
+        "sga_member": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              120.381437516,
+              14.744873626000071
+            ],
+            [
+              120.3956147130001,
+              14.744547584000031
+            ],
+            [
+              120.38029443100004,
+              14.719716781000045
+            ],
+            [
+              120.31655472800003,
+              14.699804917000051
+            ],
+            [
+              120.30241380200005,
+              14.682634905000043
+            ],
+            [
+              120.27316434900001,
+              14.675760655000033
+            ],
+            [
+              120.26621328200008,
+              14.681911219000028
+            ],
+            [
+              120.27560259200004,
+              14.697156766000035
+            ],
+            [
+              120.30972883700008,
+              14.712731130000066
+            ],
+            [
+              120.31424081900002,
+              14.734360279000043
+            ],
+            [
+              120.3378462710001,
+              14.732764364000047
+            ],
+            [
+              120.3774492760001,
+              14.758218890000023
+            ],
+            [
+              120.381437516,
+              14.744873626000071
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ADM4_EN": "Mabayo",
+        "ADM4_PCODE": "PH0300808002",
+        "ADM4_REF": null,
+        "ADM3_EN": "Morong",
+        "ADM3_PCODE": "PH0300808",
+        "ADM2_EN": "Bataan",
+        "ADM2_PCODE": "PH03008",
+        "ADM1_EN": "Region III (Central Luzon)",
+        "ADM1_PCODE": "PH03",
+        "ADM0_EN": "Philippines (the)",
+        "ADM0_PCODE": "PH",
+        "date": "2022-11-09",
+        "validOn": "2023-11-06",
+        "validTo": null,
+        "Shape_Leng": 0.374477594112,
+        "Shape_Area": 0.00315043189697,
+        "AREA_SQKM": 37.5343811156,
+        "psgc_id": "PH0300808002",
+        "psgc_code": "0300808002",
+        "psgc_name": "Mabayo",
+        "psgc_status": "matched",
+        "match_confidence": 1,
+        "psgc_type": "barangay",
+        "match_method": "exact",
+        "sga_member": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              120.36655831300004,
+              14.777086332000067
+            ],
+            [
+              120.3774492760001,
+              14.758218890000023
+            ],
+            [
+              120.3403928680001,
+              14.733787265000046
+            ],
+            [
+              120.31424081900002,
+              14.734360279000043
+            ],
+            [
+              120.31000533100007,
+              14.719799747000025
+            ],
+            [
+              120.29224331600005,
+              14.716229357000032
+            ],
+            [
+              120.27206770900011,
+              14.722703694000074
+            ],
+            [
+              120.25307541400002,
+              14.718525119000049
+            ],
+            [
+              120.25485084800005,
+              14.734673451000049
+            ],
+            [
+              120.276167912,
+              14.731633436000038
+            ],
+            [
+              120.29073804100005,
+              14.747713520000048
+            ],
+            [
+              120.28164208600003,
+              14.754443302000027
+            ],
+            [
+              120.30568697800004,
+              14.751137130000075
+            ],
+            [
+              120.33130403500002,
+              14.767899193000062
+            ],
+            [
+              120.36655831300004,
+              14.777086332000067
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ADM4_EN": "Nagbalayong",
+        "ADM4_PCODE": "PH0300808003",
+        "ADM4_REF": null,
+        "ADM3_EN": "Morong",
+        "ADM3_PCODE": "PH0300808",
+        "ADM2_EN": "Bataan",
+        "ADM2_PCODE": "PH03008",
+        "ADM1_EN": "Region III (Central Luzon)",
+        "ADM1_PCODE": "PH03",
+        "ADM0_EN": "Philippines (the)",
+        "ADM0_PCODE": "PH",
+        "date": "2022-11-09",
+        "validOn": "2023-11-06",
+        "validTo": null,
+        "Shape_Leng": 0.437890389459,
+        "Shape_Area": 0.00617973349326,
+        "AREA_SQKM": 73.646632659,
+        "psgc_id": "PH0300808003",
+        "psgc_code": "0300808003",
+        "psgc_name": "Nagbalayong",
+        "psgc_status": "matched",
+        "match_confidence": 1,
+        "psgc_type": "barangay",
+        "match_method": "exact",
+        "sga_member": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              120.3956147130001,
+              14.744547584000031
+            ],
+            [
+              120.42257137600006,
+              14.74342904100007
+            ],
+            [
+              120.34661927700006,
+              14.631766064000033
+            ],
+            [
+              120.32864613100003,
+              14.636293804000047
+            ],
+            [
+              120.31109698700004,
+              14.62696439900003
+            ],
+            [
+              120.31267201600008,
+              14.639880941000058
+            ],
+            [
+              120.30242160000012,
+              14.63514093200007
+            ],
+            [
+              120.28598801300006,
+              14.662063653000075
+            ],
+            [
+              120.31655472800003,
+              14.699804917000051
+            ],
+            [
+              120.38029443100004,
+              14.719716781000045
+            ],
+            [
+              120.3956147130001,
+              14.744547584000031
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ADM4_EN": "Poblacion",
+        "ADM4_PCODE": "PH0300808004",
+        "ADM4_REF": null,
+        "ADM3_EN": "Morong",
+        "ADM3_PCODE": "PH0300808",
+        "ADM2_EN": "Bataan",
+        "ADM2_PCODE": "PH03008",
+        "ADM1_EN": "Region III (Central Luzon)",
+        "ADM1_PCODE": "PH03",
+        "ADM0_EN": "Philippines (the)",
+        "ADM0_PCODE": "PH",
+        "date": "2022-11-09",
+        "validOn": "2023-11-06",
+        "validTo": null,
+        "Shape_Leng": 0.112741970496,
+        "Shape_Area": 0.000450590391329,
+        "AREA_SQKM": 5.37005851427,
+        "psgc_id": "PH0300808004",
+        "psgc_code": "0300808004",
+        "psgc_name": "Poblacion",
+        "psgc_status": "matched",
+        "match_confidence": 1,
+        "psgc_type": "barangay",
+        "match_method": "exact",
+        "sga_member": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              120.29251771600002,
+              14.664007737000077
+            ],
+            [
+              120.26704990300004,
+              14.66796462900004
+            ],
+            [
+              120.2613838740001,
+              14.678771993000055
+            ],
+            [
+              120.30241380200005,
+              14.682634905000043
+            ],
+            [
+              120.29251771600002,
+              14.664007737000077
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ADM4_EN": "Sabang",
+        "ADM4_PCODE": "PH0300808005",
+        "ADM4_REF": null,
+        "ADM3_EN": "Morong",
+        "ADM3_PCODE": "PH0300808",
+        "ADM2_EN": "Bataan",
+        "ADM2_PCODE": "PH03008",
+        "ADM1_EN": "Region III (Central Luzon)",
+        "ADM1_PCODE": "PH03",
+        "ADM0_EN": "Philippines (the)",
+        "ADM0_PCODE": "PH",
+        "date": "2022-11-09",
+        "validOn": "2023-11-06",
+        "validTo": null,
+        "Shape_Leng": 0.204997002534,
+        "Shape_Area": 0.00134402291477,
+        "AREA_SQKM": 16.0156572067,
+        "psgc_id": "PH0300808005",
+        "psgc_code": "0300808005",
+        "psgc_name": "Sabang",
+        "psgc_status": "matched",
+        "match_confidence": 1,
+        "psgc_type": "barangay",
+        "match_method": "exact",
+        "sga_member": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              120.27227663800011,
+              14.722616079000034
+            ],
+            [
+              120.28036261500006,
+              14.71522137900007
+            ],
+            [
+              120.31147110600011,
+              14.717503174000058
+            ],
+            [
+              120.27560259200004,
+              14.697156766000035
+            ],
+            [
+              120.26208916200005,
+              14.677331411000068
+            ],
+            [
+              120.2482131800001,
+              14.692067869000027
+            ],
+            [
+              120.24932746700006,
+              14.715990985000076
+            ],
+            [
+              120.27227663800011,
+              14.722616079000034
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

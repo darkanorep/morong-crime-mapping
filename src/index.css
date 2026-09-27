@@ -1,0 +1,436 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/geist";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-heading: var(--font-sans);
+  --font-sans: "Geist Variable", sans-serif;
+
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+/* =========================================================
+   MORONG CRIME MAPPING
+   BHC-INSPIRED MAROON + GOLD THEME
+========================================================= */
+
+:root {
+  /* Page */
+
+  --background: #faf7f5;
+  --foreground: #3b1419;
+
+  /* Cards */
+
+  --card: #ffffff;
+  --card-foreground: #3b1419;
+
+  /* Popovers / dropdowns */
+
+  --popover: #ffffff;
+  --popover-foreground: #3b1419;
+
+  /* Primary — Maroon */
+
+  --primary: #7a1f2b;
+  --primary-foreground: #ffffff;
+
+  /* Secondary — Soft Rose */
+
+  --secondary: #f8edef;
+  --secondary-foreground: #681923;
+
+  /* Muted */
+
+  --muted: #f5eeee;
+  --muted-foreground: #766064;
+
+  /* Accent — Gold */
+
+  --accent: #f8e8ba;
+  --accent-foreground: #704a00;
+
+  /* Destructive */
+
+  --destructive: #c93c48;
+
+  /* Borders / Inputs */
+
+  --border: #eadadd;
+  --input: #dfc9cd;
+
+  /* Focus Ring — Gold */
+
+  --ring: #d3a337;
+
+  /* Charts */
+
+  --chart-1: #7a1f2b;
+  --chart-2: #d3a337;
+  --chart-3: #a93b49;
+  --chart-4: #e5b94f;
+  --chart-5: #936b70;
+
+  /* Radius */
+
+  --radius: 0.75rem;
+
+  /* Sidebar */
+
+  --sidebar: #ffffff;
+  --sidebar-foreground: #3b1419;
+
+  --sidebar-primary: #7a1f2b;
+  --sidebar-primary-foreground: #ffffff;
+
+  --sidebar-accent: #fff7e3;
+  --sidebar-accent-foreground: #681923;
+
+  --sidebar-border: #eadadd;
+  --sidebar-ring: #d3a337;
+}
+
+/* =========================================================
+   DARK MODE
+========================================================= */
+
+.dark {
+  /* Page */
+
+  --background: #1d0c0f;
+  --foreground: #fff8f4;
+
+  /* Cards */
+
+  --card: #2a1015;
+  --card-foreground: #fff8f4;
+
+  /* Popovers */
+
+  --popover: #2a1015;
+  --popover-foreground: #fff8f4;
+
+  /* Primary — Gold */
+
+  --primary: #e7b84b;
+  --primary-foreground: #4b111a;
+
+  /* Secondary */
+
+  --secondary: #451820;
+  --secondary-foreground: #fff8f4;
+
+  /* Muted */
+
+  --muted: #3a151b;
+  --muted-foreground: #d0b4b8;
+
+  /* Accent */
+
+  --accent: #51202a;
+  --accent-foreground: #f2c75c;
+
+  /* Destructive */
+
+  --destructive: #ef6670;
+
+  /* Borders / Inputs */
+
+  --border: rgb(255 255 255 / 12%);
+  --input: rgb(255 255 255 / 16%);
+
+  /* Focus Ring */
+
+  --ring: #e7b84b;
+
+  /* Charts */
+
+  --chart-1: #e7b84b;
+  --chart-2: #e47783;
+  --chart-3: #f5d477;
+  --chart-4: #c95161;
+  --chart-5: #d9b7bc;
+
+  /* Sidebar */
+
+  --sidebar: #2a1015;
+  --sidebar-foreground: #fff8f4;
+
+  --sidebar-primary: #e7b84b;
+  --sidebar-primary-foreground: #4b111a;
+
+  --sidebar-accent: #451820;
+  --sidebar-accent-foreground: #fff8f4;
+
+  --sidebar-border: rgb(255 255 255 / 12%);
+  --sidebar-ring: #e7b84b;
+}
+
+/* =========================================================
+   BASE
+========================================================= */
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    @apply font-sans;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    min-width: 320px;
+  }
+
+  ::selection {
+    background: rgb(231 184 75 / 35%);
+    color: #3b1419;
+  }
+}
+
+/* =========================================================
+   BHC-INSPIRED REUSABLE UTILITIES
+========================================================= */
+
+@layer utilities {
+  /* ---------------------------------------------------------
+     Main Maroon Header
+  --------------------------------------------------------- */
+
+  .bhc-header {
+    background:
+      radial-gradient(
+        circle at 85% 20%,
+        rgb(255 255 255 / 8%),
+        transparent 24%
+      ),
+      linear-gradient(
+        135deg,
+        #4a1018 0%,
+        #681923 35%,
+        #7a1f2b 68%,
+        #922f3d 100%
+      );
+
+    color: #ffffff;
+
+    box-shadow:
+      0 8px 30px
+        rgb(75 17 26 / 16%);
+  }
+
+  /* ---------------------------------------------------------
+     Gold Accent Line
+  --------------------------------------------------------- */
+
+  .bhc-gold-line {
+    background:
+      linear-gradient(
+        90deg,
+        #a96f0b 0%,
+        #d3a337 25%,
+        #e7b84b 50%,
+        #f3d77d 75%,
+        #b77b12 100%
+      );
+  }
+
+  /* ---------------------------------------------------------
+     Maroon Icon
+  --------------------------------------------------------- */
+
+  .bhc-maroon-icon {
+    background:
+      linear-gradient(
+        135deg,
+        #922f3d,
+        #681923
+      );
+
+    color: #ffffff;
+
+    box-shadow:
+      0 6px 16px
+        rgb(122 31 43 / 18%);
+  }
+
+  /* ---------------------------------------------------------
+     Gold Icon
+  --------------------------------------------------------- */
+
+  .bhc-gold-icon {
+    background:
+      linear-gradient(
+        135deg,
+        #fff5d5,
+        #f3d77d
+      );
+
+    color: #8b5b08;
+
+    box-shadow:
+      0 6px 16px
+        rgb(211 163 55 / 14%);
+  }
+
+  /* ---------------------------------------------------------
+     Compatibility
+
+     If a component still uses the old
+     bhc-navy-icon class, it will now
+     display maroon instead.
+  --------------------------------------------------------- */
+
+  .bhc-navy-icon {
+    background:
+      linear-gradient(
+        135deg,
+        #922f3d,
+        #681923
+      );
+
+    color: #ffffff;
+  }
+
+  /* ---------------------------------------------------------
+     Soft Rose Surface
+  --------------------------------------------------------- */
+
+  .bhc-blue-surface {
+    background:
+      linear-gradient(
+        135deg,
+        #ffffff 0%,
+        #fffafa 35%,
+        #fbecef 100%
+      );
+  }
+
+  /* ---------------------------------------------------------
+     Soft Gold / Cream Surface
+  --------------------------------------------------------- */
+
+  .bhc-gold-surface {
+    background:
+      linear-gradient(
+        135deg,
+        #ffffff 0%,
+        #fffcf4 35%,
+        #fff3d4 100%
+      );
+  }
+
+  /* ---------------------------------------------------------
+     Soft Neutral Surface
+  --------------------------------------------------------- */
+
+  .bhc-neutral-surface {
+    background:
+      linear-gradient(
+        135deg,
+        #ffffff,
+        #faf7f5
+      );
+  }
+
+  /* ---------------------------------------------------------
+     Premium Card Shadow
+  --------------------------------------------------------- */
+
+  .bhc-card-shadow {
+    box-shadow:
+      0 1px 2px
+        rgb(75 17 26 / 4%),
+      0 8px 24px
+        rgb(122 31 43 / 7%);
+  }
+
+  /* ---------------------------------------------------------
+     Stronger Elevated Shadow
+  --------------------------------------------------------- */
+
+  .bhc-elevated-shadow {
+    box-shadow:
+      0 2px 4px
+        rgb(75 17 26 / 5%),
+      0 12px 32px
+        rgb(122 31 43 / 10%);
+  }
+
+  /* ---------------------------------------------------------
+     Gold Text
+  --------------------------------------------------------- */
+
+  .bhc-gold-text {
+    color: #e7b84b;
+  }
+
+  /* ---------------------------------------------------------
+     Maroon Text
+  --------------------------------------------------------- */
+
+  .bhc-maroon-text {
+    color: #7a1f2b;
+  }
+
+  /* ---------------------------------------------------------
+     Subtle Gold Border
+  --------------------------------------------------------- */
+
+  .bhc-gold-border {
+    border-color:
+      rgb(211 163 55 / 45%);
+  }
+}
