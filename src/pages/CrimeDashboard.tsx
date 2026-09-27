@@ -641,142 +641,129 @@ hover:shadow-lg"
                 const hasNoCases = selectedCrime !== null && cases === 0;
 
                 return (
-                  <button
-                    key={barangay.id}
-                    type="button"
-                    onClick={() => handleSidebarBarangaySelect(id)}
-                    aria-pressed={isSelected}
-                    className={`
-                        group relative w-full overflow-hidden
-                        rounded-xl border px-3 py-3 text-left
-                        transition-all duration-200
-                        focus:outline-none focus:ring-2
-                        focus:ring-ring focus:ring-offset-2
-                        sm:px-4
-                        ${
-                          isSelected
-                            ? "border-primary bg-primary text-primary-foreground shadow-md"
-                            : hasNoCases
-                              ? "border-border/70 bg-muted/30 hover:bg-muted/50"
-                              : "border-border bg-white hover:border-primary/30 hover:bg-[#fff8f8] hover:shadow-sm"
-                        }
-                      `}
-                  >
-                    {/* Gold selected accent */}
-
-                    {isSelected && (
-                      <div className="absolute inset-y-0 left-0 w-1 bg-[#e7b84b]" />
-                    )}
-
-                    <div className="flex items-center justify-between gap-3">
-                      {/* Logo + Barangay Information */}
-
-                      <div className="flex min-w-0 items-center gap-3">
-                        <div
-                          className={`
-        flex h-12 w-12 shrink-0
-        items-center justify-center
-        overflow-hidden rounded-full
-        border p-1
-        shadow-sm
-        transition-all duration-200
-        sm:h-14 sm:w-14
-
-        ${
-          isSelected
-            ? "border-[#f3d77d]/70 bg-white"
-            : hasNoCases
-              ? "border-border/60 bg-white/70 opacity-70"
-              : "border-[#eadadd] bg-white"
-        }
-      `}
-                        >
-                          <img
-                            src={barangayLogos[id]}
-                            alt={`${barangay.name} barangay logo`}
-                            className="
-          h-full w-full
-          object-contain
-          transition-transform duration-300
-          group-hover:scale-110
-        "
-                            loading="lazy"
-                          />
-                        </div>
-
-                        {/* Name + Case Description */}
-
-                        <div className="min-w-0">
-                          <p
-                            className={`
-          break-words text-sm font-semibold
-          sm:text-base
-
-          ${
-            isSelected
-              ? "text-white"
-              : hasNoCases
-                ? "text-muted-foreground"
-                : "text-foreground"
-          }
-        `}
-                          >
-                            {barangay.name}
-                          </p>
-
-                          <p
-                            className={`
-          mt-1 text-[11px]
-          sm:text-xs
-
-          ${isSelected ? "text-white/70" : "text-muted-foreground"}
-        `}
-                          >
-                            {cases === 0
-                              ? "No recorded cases"
-                              : cases === 1
-                                ? "1 recorded case"
-                                : `${cases} recorded cases`}
-                          </p>
-                        </div>
-                      </div>
-
-                      {/* Case Count */}
-
-                      <span
-                        className={`
-      shrink-0 rounded-full
-      px-2.5 py-1
-      text-sm font-bold
+  <button
+    key={barangay.id}
+    type="button"
+    onClick={() => handleSidebarBarangaySelect(id)}
+    aria-pressed={isSelected}
+    className={`
+      group relative w-full overflow-hidden
+      rounded-xl border px-3 py-3 text-left
+      transition-all duration-200
+      focus:outline-none focus:ring-2
+      focus:ring-ring focus:ring-offset-2
+      sm:px-4
 
       ${
         isSelected
-          ? "bg-white/15 text-white"
+          ? "border-primary bg-primary text-primary-foreground shadow-md"
           : hasNoCases
-            ? "bg-muted text-muted-foreground"
-            : "bg-[#f8edef] text-primary"
+            ? "border-border/70 bg-muted/30 hover:bg-muted/50"
+            : "border-border bg-white hover:border-primary/30 hover:bg-[#fff8f8] hover:shadow-sm"
       }
     `}
-                      >
-                        {cases}
-                      </span>
-                    </div>
+  >
+    {/* Gold selected accent */}
+    {isSelected && (
+      <div className="absolute inset-y-0 left-0 w-1 bg-[#e7b84b]" />
+    )}
 
-                    {/* Case Description */}
+    <div className="flex items-center justify-between gap-3">
+      {/* Logo + Barangay Information */}
+      <div className="flex min-w-0 items-center gap-3">
+        {/* Barangay Logo */}
+        <div
+          className={`
+            flex h-12 w-12 shrink-0
+            items-center justify-center
+            overflow-hidden rounded-full
+            border bg-white p-1
+            shadow-sm
+            transition-all duration-200
+            sm:h-14 sm:w-14
 
-                    <p
-                      className={`ml-[26px] mt-1 text-[11px] sm:ml-7 sm:text-xs ${
-                        isSelected ? "text-white/70" : "text-muted-foreground"
-                      }`}
-                    >
-                      {cases === 0
-                        ? "No recorded cases"
-                        : cases === 1
-                          ? "1 recorded case"
-                          : `${cases} recorded cases`}
-                    </p>
-                  </button>
-                );
+            ${
+              isSelected
+                ? "border-[#f3d77d]/70"
+                : hasNoCases
+                  ? "border-border/60 opacity-70"
+                  : "border-[#eadadd]"
+            }
+          `}
+        >
+          <img
+            src={barangayLogos[id]}
+            alt={`${barangay.name} barangay logo`}
+            className="
+              h-full w-full object-contain
+              transition-transform duration-300
+              group-hover:scale-110
+            "
+            loading="lazy"
+          />
+        </div>
+
+        {/* Name + Case Description */}
+        <div className="min-w-0">
+          <p
+            className={`
+              break-words text-sm font-semibold
+              sm:text-base
+
+              ${
+                isSelected
+                  ? "text-white"
+                  : hasNoCases
+                    ? "text-muted-foreground"
+                    : "text-foreground"
+              }
+            `}
+          >
+            {barangay.name}
+          </p>
+
+          <p
+            className={`
+              mt-1 text-[11px]
+              sm:text-xs
+
+              ${
+                isSelected
+                  ? "text-white/70"
+                  : "text-muted-foreground"
+              }
+            `}
+          >
+            {cases === 0
+              ? "No recorded cases"
+              : cases === 1
+                ? "1 recorded case"
+                : `${cases} recorded cases`}
+          </p>
+        </div>
+      </div>
+
+      {/* Case Count */}
+      <span
+        className={`
+          shrink-0 rounded-full
+          px-2.5 py-1
+          text-sm font-bold
+
+          ${
+            isSelected
+              ? "bg-white/15 text-white"
+              : hasNoCases
+                ? "bg-muted text-muted-foreground"
+                : "bg-[#f8edef] text-primary"
+          }
+        `}
+      >
+        {cases}
+      </span>
+    </div>
+  </button>
+);
               })}
             </CardContent>
           </Card>
