@@ -1,4 +1,43 @@
-# React + TypeScript + Vite
+# Morong Crime Mapping
+
+## Run Locally
+
+### Prerequisites
+
+- Install Node.js 20 or newer from [nodejs.org](https://nodejs.org/).
+- Open PowerShell or a terminal in the project folder.
+
+### Setup
+
+Install the project dependencies:
+
+```powershell
+npm install
+```
+
+### Start the development server
+
+```powershell
+npm run dev
+```
+
+Open the local URL shown in the terminal, usually:
+
+```text
+http://localhost:5173
+```
+
+The app will reload automatically when you edit the source files.
+
+### Other commands
+
+```powershell
+npm run build    # Create a production build
+npm run preview  # Preview the production build locally
+npm run lint     # Check the code for lint issues
+```
+
+## Project Template Notes
 
 This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
 
