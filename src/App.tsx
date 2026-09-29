@@ -3,6 +3,14 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
 import LandingPage from "@/pages/LandingPage"
 import CrimeDashboard from "@/pages/CrimeDashboard"
   
+
+export type BarangayId =
+  | "poblacion"
+  | "mabayo"
+  | "binaritan"
+  | "sabang"
+  | "nagbalayong";
+
 function App() {
   return (
     <BrowserRouter>
