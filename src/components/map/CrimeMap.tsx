@@ -1,89 +1,63 @@
-import {
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react"
+import { useEffect, useMemo, useRef, useState } from "react";
 
-import type { BarangayId } from "@/App"
+import type { BarangayId } from "@/App";
 
 import {
   GeoJSON,
+  LayersControl,
   MapContainer,
   Marker,
   TileLayer,
   Tooltip,
   useMap,
-} from "react-leaflet"
+} from "react-leaflet";
 
-import {
-  divIcon,
-  geoJSON as createGeoJSON,
-} from "leaflet"
+import { divIcon, geoJSON as createGeoJSON } from "leaflet";
 
-import type {
-  DivIcon,
-  GeoJSON as LeafletGeoJSON,
-  Layer,
-  Path,
-} from "leaflet"
+import type { DivIcon, GeoJSON as LeafletGeoJSON, Layer, Path } from "leaflet";
 
-import type {
-  Feature,
-  FeatureCollection,
-  Geometry,
-} from "geojson"
+import type { Feature, FeatureCollection, Geometry } from "geojson";
 
-import morongBarangays from "@/data/morong-barangays.json"
+import morongBarangays from "@/data/morong-barangays.json";
 
-import "leaflet/dist/leaflet.css"
+import "leaflet/dist/leaflet.css";
 
 /* ==================================
    PROPS
 ================================== */
 
 interface CrimeMapProps {
-  selectedBarangay: BarangayId | null
+  selectedBarangay: BarangayId | null;
 
-  onSelectBarangay: (
-    barangay: BarangayId | null
-  ) => void
+  onSelectBarangay: (barangay: BarangayId | null) => void;
 
-  getBarangayTotal: (
-    barangay: BarangayId
-  ) => number
+  getBarangayTotal: (barangay: BarangayId) => number;
 
-  selectedCrimeId: string
-  selectedCrimeName: string
+  selectedCrimeId: string;
+  selectedCrimeName: string;
 
-  hoveredBarangay?: BarangayId | null
+  hoveredBarangay?: BarangayId | null;
 
-  onHoverBarangay?: (
-    barangay: BarangayId | null
-  ) => void
+  onHoverBarangay?: (barangay: BarangayId | null) => void;
 }
 
 /* ==================================
    GEOJSON DATA
 ================================== */
 
-const morongData =
-  morongBarangays as FeatureCollection
+const morongData = morongBarangays as FeatureCollection;
 
 /* ==================================
    BARANGAY NAME MAPPING
 ================================== */
 
-const barangayNameMap: Record<
-  string,
-  BarangayId
-> = {
+const barangayNameMap: Record<string, BarangayId> = {
   poblacion: "poblacion",
   mabayo: "mabayo",
   binaritan: "binaritan",
   sabang: "sabang",
   nagbalayong: "nagbalayong",
-}
+};
 
 /* ==================================
    BARANGAY IDs
@@ -95,42 +69,34 @@ const barangayIds: BarangayId[] = [
   "binaritan",
   "sabang",
   "nagbalayong",
-]
+];
 
 /* ==================================
    PIN ANIMATION ORDER
 ================================== */
 
-const barangayPinDelay: Record<
-  BarangayId,
-  number
-> = {
+const barangayPinDelay: Record<BarangayId, number> = {
   poblacion: 0,
   mabayo: 100,
   binaritan: 200,
   sabang: 300,
   nagbalayong: 400,
-}
+};
 
 /* ==================================
    CRIME COLORS
 ================================== */
 
-const crimeColors: Record<
-  string,
-  string
-> = {
+const crimeColors: Record<string, string> = {
   /* INDEX CRIMES */
 
   robbery: "#dc2626",
 
-  "robbery-with-homicide":
-    "#7f1d1d",
+  "robbery-with-homicide": "#7f1d1d",
 
   theft: "#2563eb",
 
-  "qualified-theft":
-    "#1d4ed8",
+  "qualified-theft": "#1d4ed8",
 
   murder: "#881337",
 
@@ -140,181 +106,106 @@ const crimeColors: Record<
 
   /* NON-INDEX CRIMES */
 
-  "attempted-homicide":
-    "#e11d48",
+  "attempted-homicide": "#e11d48",
 
-  "frustrated-homicide":
-    "#f43f5e",
+  "frustrated-homicide": "#f43f5e",
 
-  "grave-threats":
-    "#ea580c",
+  "grave-threats": "#ea580c",
 
-  "light-threats":
-    "#f97316",
+  "light-threats": "#f97316",
 
-  "unjust-vexation":
-    "#0891b2",
+  "unjust-vexation": "#0891b2",
 
-  cockfighting:
-    "#65a30d",
+  cockfighting: "#65a30d",
 
-  "acts-of-lasciviousness":
-    "#db2777",
+  "acts-of-lasciviousness": "#db2777",
 
-  "alarms-and-scandal":
-    "#0d9488",
+  "alarms-and-scandal": "#0d9488",
 
-  "anti-gambling-law":
-    "#16a34a",
+  "anti-gambling-law": "#16a34a",
 
-  "malicious-mischief":
-    "#0284c7",
+  "malicious-mischief": "#0284c7",
 
-  "dangerous-drugs":
-    "#9333ea",
+  "dangerous-drugs": "#9333ea",
 
-  "resistance-disobedience-person-authority":
-    "#475569",
+  "resistance-disobedience-person-authority": "#475569",
 
-  "violence-against-women-and-their-children":
-    "#be185d",
+  "violence-against-women-and-their-children": "#be185d",
 
-  "photo-and-video-voyeurism":
-    "#c026d3",
+  "photo-and-video-voyeurism": "#c026d3",
 
-  "comprehensive-law-firearms-ammunition":
-    "#334155",
+  "comprehensive-law-firearms-ammunition": "#334155",
 
-  "qualified-trespass-to-dwelling":
-    "#0f766e",
+  "qualified-trespass-to-dwelling": "#0f766e",
 
-  "anti-electricity-electric-transmission-pilferage":
-    "#ca8a04",
+  "anti-electricity-electric-transmission-pilferage": "#ca8a04",
 
-  "illegal-possession-bladed-pointed-blunt-weapons":
-    "#64748b",
+  "illegal-possession-bladed-pointed-blunt-weapons": "#64748b",
 
-  "direct-assaults":
-    "#b45309",
+  "direct-assaults": "#b45309",
 
-  "land-transportation-and-traffic-code":
-    "#0369a1",
+  "land-transportation-and-traffic-code": "#0369a1",
 
-  "omnibus-election-code":
-    "#4f46e5",
+  "omnibus-election-code": "#4f46e5",
 
-  "other-forms-of-trespass":
-    "#059669",
+  "other-forms-of-trespass": "#059669",
 
-  "qualified-seduction":
-    "#a21caf",
+  "qualified-seduction": "#a21caf",
 
-  "slight-physical-injuries-and-maltreatment":
-    "#e8790b",
+  "slight-physical-injuries-and-maltreatment": "#e8790b",
 
-  "special-protection-children":
-    "#8b5cf6",
+  "special-protection-children": "#8b5cf6",
 
-  estafa:
-    "#0891b2",
+  estafa: "#0891b2",
 
   /* VEHICULAR */
 
-  "reckless-imprudence-damage-to-property":
-    "#d97706",
+  "reckless-imprudence-damage-to-property": "#d97706",
 
-  "reckless-imprudence-physical-injury":
-    "#f59e0b",
+  "reckless-imprudence-physical-injury": "#f59e0b",
 
-  "reckless-imprudence-multiple-physical-injury":
-    "#eab308",
+  "reckless-imprudence-multiple-physical-injury": "#eab308",
 
-  "reckless-imprudence-homicide":
-    "#92400e",
-}
+  "reckless-imprudence-homicide": "#92400e",
+};
 
 /* ==================================
    COLOR HELPERS
 ================================== */
 
-function hexToRgb(
-  hex: string
-) {
-  const clean =
-    hex.replace("#", "")
+function hexToRgb(hex: string) {
+  const clean = hex.replace("#", "");
 
-  const value =
-    Number.parseInt(
-      clean,
-      16
-    )
+  const value = Number.parseInt(clean, 16);
 
   return {
-    r:
-      (value >> 16) &
-      255,
+    r: (value >> 16) & 255,
 
-    g:
-      (value >> 8) &
-      255,
+    g: (value >> 8) & 255,
 
-    b:
-      value &
-      255,
-  }
+    b: value & 255,
+  };
 }
 
-function mixColors(
-  first: string,
-  second: string,
-  amount: number
-) {
-  const a =
-    hexToRgb(first)
+function mixColors(first: string, second: string, amount: number) {
+  const a = hexToRgb(first);
 
-  const b =
-    hexToRgb(second)
+  const b = hexToRgb(second);
 
-  const mix = (
-    start: number,
-    end: number
-  ) =>
-    Math.round(
-      start +
-        (end - start) *
-          amount
-    )
+  const mix = (start: number, end: number) =>
+    Math.round(start + (end - start) * amount);
 
-  const r =
-    mix(
-      a.r,
-      b.r
-    )
+  const r = mix(a.r, b.r);
 
-  const g =
-    mix(
-      a.g,
-      b.g
-    )
+  const g = mix(a.g, b.g);
 
-  const blue =
-    mix(
-      a.b,
-      b.b
-    )
+  const blue = mix(a.b, b.b);
 
-  return `rgb(${r}, ${g}, ${blue})`
+  return `rgb(${r}, ${g}, ${blue})`;
 }
 
-function getCrimeBaseColor(
-  crimeId: string
-) {
-  return (
-    crimeColors[
-      crimeId
-    ] ??
-    "#7a1f2b"
-  )
+function getCrimeBaseColor(crimeId: string) {
+  return crimeColors[crimeId] ?? "#7a1f2b";
 }
 
 /* ==================================
@@ -322,16 +213,10 @@ function getCrimeBaseColor(
 ================================== */
 
 function getBarangayName(
-  properties:
-    | Record<
-        string,
-        unknown
-      >
-    | null
-    | undefined
+  properties: Record<string, unknown> | null | undefined,
 ): string {
   if (!properties) {
-    return ""
+    return "";
   }
 
   const possibleNames = [
@@ -340,19 +225,11 @@ function getBarangayName(
     properties.brgy_name,
     properties.BRGY_NAME,
     properties.ADM4_EN,
-  ]
+  ];
 
-  const name =
-    possibleNames.find(
-      (value) =>
-        typeof value ===
-        "string"
-    )
+  const name = possibleNames.find((value) => typeof value === "string");
 
-  return typeof name ===
-    "string"
-    ? name
-    : ""
+  return typeof name === "string" ? name : "";
 }
 
 /* ==================================
@@ -360,27 +237,11 @@ function getBarangayName(
 ================================== */
 
 function getBarangayId(
-  properties:
-    | Record<
-        string,
-        unknown
-      >
-    | null
-    | undefined
+  properties: Record<string, unknown> | null | undefined,
 ): BarangayId | null {
-  const name =
-    getBarangayName(
-      properties
-    )
-      .trim()
-      .toLowerCase()
+  const name = getBarangayName(properties).trim().toLowerCase();
 
-  return (
-    barangayNameMap[
-      name
-    ] ??
-    null
-  )
+  return barangayNameMap[name] ?? null;
 }
 
 /* ==================================
@@ -388,39 +249,25 @@ function getBarangayId(
 ================================== */
 
 function MapResizeHandler() {
-  const map =
-    useMap()
+  const map = useMap();
 
   useEffect(() => {
-    const invalidate =
-      () => {
-        map.invalidateSize()
-      }
+    const invalidate = () => {
+      map.invalidateSize();
+    };
 
-    const timeout =
-      window.setTimeout(
-        invalidate,
-        100
-      )
+    const timeout = window.setTimeout(invalidate, 100);
 
-    window.addEventListener(
-      "resize",
-      invalidate
-    )
+    window.addEventListener("resize", invalidate);
 
     return () => {
-      window.clearTimeout(
-        timeout
-      )
+      window.clearTimeout(timeout);
 
-      window.removeEventListener(
-        "resize",
-        invalidate
-      )
-    }
-  }, [map])
+      window.removeEventListener("resize", invalidate);
+    };
+  }, [map]);
 
-  return null
+  return null;
 }
 
 /* ==================================
@@ -435,202 +282,108 @@ function MorongPolygons({
   selectedCrimeName,
   hoveredBarangay,
 }: CrimeMapProps) {
-  const map =
-    useMap()
+  const map = useMap();
 
-  const geoJsonRef =
-    useRef<
-      LeafletGeoJSON | null
-    >(null)
+  const geoJsonRef = useRef<LeafletGeoJSON | null>(null);
 
-  const layersRef =
-    useRef<
-      Partial<
-        Record<
-          BarangayId,
-          Layer
-        >
-      >
-    >({})
+  const layersRef = useRef<Partial<Record<BarangayId, Layer>>>({});
 
   /* ==================================
      BARANGAY TOTALS
   ================================== */
 
-  const totals: Record<
-    BarangayId,
-    number
-  > = {
-    poblacion:
-      getBarangayTotal(
-        "poblacion"
-      ),
+  const totals: Record<BarangayId, number> = {
+    poblacion: getBarangayTotal("poblacion"),
 
-    mabayo:
-      getBarangayTotal(
-        "mabayo"
-      ),
+    mabayo: getBarangayTotal("mabayo"),
 
-    binaritan:
-      getBarangayTotal(
-        "binaritan"
-      ),
+    binaritan: getBarangayTotal("binaritan"),
 
-    sabang:
-      getBarangayTotal(
-        "sabang"
-      ),
+    sabang: getBarangayTotal("sabang"),
 
-    nagbalayong:
-      getBarangayTotal(
-        "nagbalayong"
-      ),
-  }
+    nagbalayong: getBarangayTotal("nagbalayong"),
+  };
 
-  const maxCases =
-    Math.max(
-      ...Object.values(
-        totals
-      ),
-      1
-    )
+  const maxCases = Math.max(...Object.values(totals), 1);
 
-  const baseColor =
-    getCrimeBaseColor(
-      selectedCrimeId
-    )
+  const baseColor = getCrimeBaseColor(selectedCrimeId);
 
   /* ==================================
      CRIME INTENSITY COLOR
   ================================== */
 
-  function getCrimeColor(
-    cases: number
-  ) {
-    if (
-      cases === 0
-    ) {
-      return "#f1e7e8"
+  function getCrimeColor(cases: number) {
+    if (cases === 0) {
+      return "#f1e7e8";
     }
 
-    const ratio =
-      cases /
-      maxCases
+    const ratio = cases / maxCases;
 
     /*
      * ALL LOADED CRIMES
      */
 
-    if (
-      selectedCrimeId ===
-      "all"
-    ) {
-      if (
-        ratio <= 0.25
-      ) {
-        return "#f6d98d"
+    if (selectedCrimeId === "all") {
+      if (ratio <= 0.25) {
+        return "#f6d98d";
       }
 
-      if (
-        ratio <= 0.5
-      ) {
-        return "#e7a65b"
+      if (ratio <= 0.5) {
+        return "#e7a65b";
       }
 
-      if (
-        ratio <= 0.75
-      ) {
-        return "#b84a58"
+      if (ratio <= 0.75) {
+        return "#b84a58";
       }
 
-      return "#7a1f2b"
+      return "#7a1f2b";
     }
 
     /*
      * SELECTED CRIME
      */
 
-    if (
-      ratio <= 0.25
-    ) {
-      return mixColors(
-        baseColor,
-        "#ffffff",
-        0.72
-      )
+    if (ratio <= 0.25) {
+      return mixColors(baseColor, "#ffffff", 0.72);
     }
 
-    if (
-      ratio <= 0.5
-    ) {
-      return mixColors(
-        baseColor,
-        "#ffffff",
-        0.48
-      )
+    if (ratio <= 0.5) {
+      return mixColors(baseColor, "#ffffff", 0.48);
     }
 
-    if (
-      ratio <= 0.75
-    ) {
-      return mixColors(
-        baseColor,
-        "#ffffff",
-        0.22
-      )
+    if (ratio <= 0.75) {
+      return mixColors(baseColor, "#ffffff", 0.22);
     }
 
-    return baseColor
+    return baseColor;
   }
 
   /* ==================================
      POLYGON STYLE
   ================================== */
 
-  const getPolygonStyle = (
-    id: BarangayId
-  ) => {
-    const cases =
-      totals[id]
+  const getPolygonStyle = (id: BarangayId) => {
+    const cases = totals[id];
 
-    const isSelected =
-      id ===
-      selectedBarangay
+    const isSelected = id === selectedBarangay;
 
-    const isHovered =
-      id ===
-      hoveredBarangay
+    const isHovered = id === hoveredBarangay;
 
     /*
      * ALL LOADED CRIMES:
      * Show normal choropleth.
      */
 
-    if (
-      selectedCrimeId ===
-      "all"
-    ) {
+    if (selectedCrimeId === "all") {
       return {
-        color:
-          isSelected
-            ? "#d3a337"
-            : "#ffffff",
+        color: isSelected ? "#d3a337" : "#ffffff",
 
-        weight:
-          isSelected
-            ? 5
-            : 2,
+        weight: isSelected ? 5 : 2,
 
-        fillColor:
-          getCrimeColor(
-            cases
-          ),
+        fillColor: getCrimeColor(cases),
 
-        fillOpacity:
-          isSelected
-            ? 0.95
-            : 0.82,
-      }
+        fillOpacity: isSelected ? 0.95 : 0.82,
+      };
     }
 
     /*
@@ -641,220 +394,121 @@ function MorongPolygons({
      * or the barangay is selected.
      */
 
-    const isActive =
-      isSelected ||
-      isHovered
+    const isActive = isSelected || isHovered;
 
     return {
-      color:
-        isSelected
-          ? "#d3a337"
-          : isHovered
-            ? baseColor
-            : "transparent",
+      color: isSelected ? "#d3a337" : isHovered ? baseColor : "transparent",
 
-      weight:
-        isSelected
-          ? 5
-          : isHovered
-            ? 4
-            : 0,
+      weight: isSelected ? 5 : isHovered ? 4 : 0,
 
-      fillColor:
-        isActive
-          ? getCrimeColor(
-              cases
-            )
-          : "#f1e7e8",
+      fillColor: isActive ? getCrimeColor(cases) : "#f1e7e8",
 
-      fillOpacity:
-        isSelected
-          ? 0.95
-          : isHovered
-            ? 0.9
-            : 0.08,
-    }
-  }
+      fillOpacity: isSelected
+  ? 0.55
+  : isHovered
+    ? 0.45
+    : 0.3,
+    };
+  };
 
   /* ==================================
      FIT MAP TO MORONG
   ================================== */
 
   useEffect(() => {
-    if (
-      !geoJsonRef.current
-    ) {
-      return
+    if (!geoJsonRef.current) {
+      return;
     }
 
-    if (
-      selectedBarangay
-    ) {
-      return
+    if (selectedBarangay) {
+      return;
     }
 
-    const bounds =
-      geoJsonRef.current
-        .getBounds()
+    const bounds = geoJsonRef.current.getBounds();
 
-    if (
-      bounds.isValid()
-    ) {
-      map.fitBounds(
-        bounds,
-        {
-          padding: [
-            16,
-            16,
-          ],
-        }
-      )
+    if (bounds.isValid()) {
+      map.fitBounds(bounds, {
+        padding: [16, 16],
+      });
     }
-  }, [
-    map,
-    selectedBarangay,
-    selectedCrimeId,
-  ])
+  }, [map, selectedBarangay, selectedCrimeId]);
 
   /* ==================================
      ZOOM SELECTED BARANGAY
   ================================== */
 
   useEffect(() => {
-    if (
-      !selectedBarangay
-    ) {
-      return
+    if (!selectedBarangay) {
+      return;
     }
 
-    const layer =
-      layersRef.current[
-        selectedBarangay
-      ]
+    const layer = layersRef.current[selectedBarangay];
 
     if (!layer) {
-      return
+      return;
     }
 
-    if (
-      "getBounds" in
-      layer
-    ) {
-      const polygon =
-        layer as LeafletGeoJSON
+    if ("getBounds" in layer) {
+      const polygon = layer as LeafletGeoJSON;
 
-      const bounds =
-        polygon.getBounds()
+      const bounds = polygon.getBounds();
 
-      if (
-        bounds.isValid()
-      ) {
-        map.fitBounds(
-          bounds,
-          {
-            padding: [
-              32,
-              32,
-            ],
+      if (bounds.isValid()) {
+        map.fitBounds(bounds, {
+          padding: [32, 32],
 
-            maxZoom: 15,
-          }
-        )
+          maxZoom: 15,
+        });
       }
     }
-  }, [
-    selectedBarangay,
-    selectedCrimeId,
-    map,
-  ])
+  }, [selectedBarangay, selectedCrimeId, map]);
 
   /* ==================================
      SYNC POLYGON STYLES
   ================================== */
 
   useEffect(() => {
-    barangayIds.forEach(
-      (id) => {
-        const layer =
-          layersRef.current[
-            id
-          ]
+    barangayIds.forEach((id) => {
+      const layer = layersRef.current[id];
 
-        if (
-          !layer ||
-          !(
-            "setStyle" in
-            layer
-          )
-        ) {
-          return
-        }
-
-        const polygon =
-          layer as Path
-
-        polygon.setStyle(
-          getPolygonStyle(
-            id
-          )
-        )
-
-        if (
-          (
-            id ===
-              selectedBarangay ||
-            id ===
-              hoveredBarangay
-          ) &&
-          "bringToFront" in
-            polygon
-        ) {
-          polygon
-            .bringToFront()
-        }
+      if (!layer || !("setStyle" in layer)) {
+        return;
       }
-    )
-  }, [
-    selectedBarangay,
-    hoveredBarangay,
-    selectedCrimeId,
-  ])
+
+      const polygon = layer as Path;
+
+      polygon.setStyle(getPolygonStyle(id));
+
+      if (
+        (id === selectedBarangay || id === hoveredBarangay) &&
+        "bringToFront" in polygon
+      ) {
+        polygon.bringToFront();
+      }
+    });
+  }, [selectedBarangay, hoveredBarangay, selectedCrimeId]);
 
   /* ==================================
      INITIAL GEOJSON STYLE
   ================================== */
 
-  const getStyle = (
-    feature?: Feature<
-      Geometry
-    >
-  ) => {
-    const id =
-      getBarangayId(
-        feature?.properties
-      )
+  const getStyle = (feature?: Feature<Geometry>) => {
+    const id = getBarangayId(feature?.properties);
 
     if (!id) {
       return {
-        color:
-          "transparent",
+        color: "transparent",
 
         weight: 0,
 
-        fillColor:
-          "#f1e7e8",
+        fillColor: "#f1e7e8",
 
-        fillOpacity:
-          0.08,
-      }
+        fillOpacity: 0.08,
+      };
     }
 
-    return (
-      getPolygonStyle(
-        id
-      )
-    )
-  }
+    return getPolygonStyle(id);
+  };
 
   return (
     <GeoJSON
@@ -863,48 +517,22 @@ function MorongPolygons({
        * when the crime changes.
        */
 
-      key={
-        selectedCrimeId
-      }
-
-      ref={
-        geoJsonRef
-      }
-
-      data={
-        morongData
-      }
-
-      style={
-        getStyle
-      }
-
-      onEachFeature={(
-        feature,
-        layer
-      ) => {
-        const id =
-          getBarangayId(
-            feature.properties
-          )
+      key={selectedCrimeId}
+      ref={geoJsonRef}
+      data={morongData}
+      style={getStyle}
+      onEachFeature={(feature, layer) => {
+        const id = getBarangayId(feature.properties);
 
         if (!id) {
-          return
+          return;
         }
 
-        layersRef.current[
-          id
-        ] = layer
+        layersRef.current[id] = layer;
 
-        const name =
-          getBarangayName(
-            feature.properties
-          )
+        const name = getBarangayName(feature.properties);
 
-        const cases =
-          getBarangayTotal(
-            id
-          )
+        const cases = getBarangayTotal(id);
 
         /* ==========================
            POLYGON TOOLTIP
@@ -959,39 +587,30 @@ function MorongPolygons({
                   color: #5f5153;
                   font-size: 11px;
                 ">
-                  recorded ${
-                    cases === 1
-                      ? "case"
-                      : "cases"
-                  }
+                  recorded ${cases === 1 ? "case" : "cases"}
                 </span>
               </div>
             </div>
           `,
           {
             sticky: true,
-            direction:
-              "auto",
-            className:
-              "crime-map-tooltip",
-          }
-        )
+            direction: "auto",
+            className: "crime-map-tooltip",
+          },
+        );
 
         /* ==========================
            POLYGON CLICK
         ========================== */
 
         if (cases > 0 || selectedCrimeId === "all") {
-  layer.on(
-    "click",
-    () => {
-      onSelectBarangay(id)
-    }
-  )
-}
+          layer.on("click", () => {
+            onSelectBarangay(id);
+          });
+        }
       }}
     />
-  )
+  );
 }
 
 /* ==================================
@@ -1021,68 +640,42 @@ function BarangayPins({
      CREATE REFERENCE POINTS
   ================================== */
 
-  const markers =
-    useMemo(() => {
-      return morongData
-        .features
-        .flatMap(
-          (feature) => {
-            const id =
-              getBarangayId(
-                feature
-                  .properties
-              )
+  const markers = useMemo(() => {
+    return morongData.features.flatMap((feature) => {
+      const id = getBarangayId(feature.properties);
 
-            if (!id) {
-              return []
-            }
+      if (!id) {
+        return [];
+      }
 
-            const name =
-              getBarangayName(
-                feature
-                  .properties
-              ) ||
-              id
-                .charAt(0)
-                .toUpperCase() +
-                id.slice(1)
+      const name =
+        getBarangayName(feature.properties) ||
+        id.charAt(0).toUpperCase() + id.slice(1);
 
-            const layer =
-              createGeoJSON(
-                feature
-              )
+      const layer = createGeoJSON(feature);
 
-            const bounds =
-              layer.getBounds()
+      const bounds = layer.getBounds();
 
-            if (
-              !bounds.isValid()
-            ) {
-              return []
-            }
+      if (!bounds.isValid()) {
+        return [];
+      }
 
-            return [
-              {
-                id,
-                name,
+      return [
+        {
+          id,
+          name,
 
-                position:
-                  bounds
-                    .getCenter(),
-              },
-            ]
-          }
-        )
-    }, [])
+          position: bounds.getCenter(),
+        },
+      ];
+    });
+  }, []);
 
   /* ==================================
      CRIME COLOR
   ================================== */
 
-  const baseColor =
-    getCrimeBaseColor(
-      selectedCrimeId
-    )
+  const baseColor = getCrimeBaseColor(selectedCrimeId);
 
   /* ==================================
      MEMOIZED PIN ICONS
@@ -1102,32 +695,16 @@ function BarangayPins({
      CSS drop animation cannot restart.
   ================================== */
 
-  const markerIcons =
-    useMemo<
-      Record<
-        BarangayId,
-        DivIcon
-      >
-    >(() => {
-      const icons =
-        {} as Record<
-          BarangayId,
-          DivIcon
-        >
+  const markerIcons = useMemo<Record<BarangayId, DivIcon>>(() => {
+    const icons = {} as Record<BarangayId, DivIcon>;
 
-      barangayIds.forEach(
-        (id) => {
-          const delay =
-            barangayPinDelay[
-              id
-            ]
+    barangayIds.forEach((id) => {
+      const delay = barangayPinDelay[id];
 
-          icons[id] =
-            divIcon({
-              className:
-                "barangay-map-pin-container",
+      icons[id] = divIcon({
+        className: "barangay-map-pin-container",
 
-              html: `
+        html: `
                 <div
                   class="barangay-pin-drop"
                   style="
@@ -1157,230 +734,159 @@ function BarangayPins({
                 </div>
               `,
 
-              iconSize: [
-                40,
-                46,
-              ],
+        iconSize: [40, 46],
 
-              iconAnchor: [
-                20,
-                42,
-              ],
+        iconAnchor: [20, 42],
 
-              tooltipAnchor: [
-                0,
-                -42,
-              ],
-            })
-        }
-      )
+        tooltipAnchor: [0, -42],
+      });
+    });
 
-      return icons
-    }, [
-      selectedCrimeId,
-      baseColor,
-    ])
+    return icons;
+  }, [selectedCrimeId, baseColor]);
 
   /* ==================================
      HIDE PINS FOR ALL CRIMES
   ================================== */
 
-  if (
-    selectedCrimeId ===
-    "all"
-  ) {
-    return null
+  if (selectedCrimeId === "all") {
+    return null;
   }
 
   /* ==================================
      ONLY SHOW PINS WITH CASES
   ================================== */
 
-  const visibleMarkers =
-    markers.filter(
-      (marker) =>
-        getBarangayTotal(
-          marker.id
-        ) > 0
-    )
+  const visibleMarkers = markers.filter(
+    (marker) => getBarangayTotal(marker.id) > 0,
+  );
 
   return (
     <>
-      {visibleMarkers.map(
-        (marker) => {
-          const cases =
-            getBarangayTotal(
-              marker.id
-            )
+      {visibleMarkers.map((marker) => {
+        const cases = getBarangayTotal(marker.id);
 
-          const isSelected =
-            marker.id ===
-            selectedBarangay
+        const isSelected = marker.id === selectedBarangay;
 
-          return (
-            <Marker
-              /*
-               * IMPORTANT:
-               *
-               * This key changes only
-               * when a different crime
-               * is selected.
-               *
-               * Hover does not change it.
-               */
+        return (
+          <Marker
+            /*
+             * IMPORTANT:
+             *
+             * This key changes only
+             * when a different crime
+             * is selected.
+             *
+             * Hover does not change it.
+             */
 
-              key={`${selectedCrimeId}-${marker.id}`}
+            key={`${selectedCrimeId}-${marker.id}`}
+            position={marker.position}
+            /*
+             * IMPORTANT:
+             *
+             * We use the already
+             * memoized icon.
+             *
+             * Never call divIcon()
+             * directly here.
+             */
 
-              position={
-                marker.position
-              }
-
-              /*
-               * IMPORTANT:
-               *
-               * We use the already
-               * memoized icon.
-               *
-               * Never call divIcon()
-               * directly here.
-               */
-
-              icon={
-                markerIcons[
-                  marker.id
-                ]
-              }
-
-              zIndexOffset={
-                isSelected
-                  ? 1000
-                  : 500
-              }
-
-              eventHandlers={{
-                /* ======================
+            icon={markerIcons[marker.id]}
+            zIndexOffset={isSelected ? 1000 : 500}
+            eventHandlers={{
+              /* ======================
                    PIN HOVER
 
                    Only show polygon.
                    Do NOT modify icon.
                 ====================== */
 
-                mouseover: () => {
-                  onHoverBarangay?.(
-                    marker.id
-                  )
-                },
+              mouseover: () => {
+                onHoverBarangay?.(marker.id);
+              },
 
-                /* ======================
+              /* ======================
                    PIN MOUSE OUT
 
                    Hide temporary
                    polygon only.
                 ====================== */
 
-                mouseout: () => {
-                  onHoverBarangay?.(
-                    null
-                  )
-                },
+              mouseout: () => {
+                onHoverBarangay?.(null);
+              },
 
-                /* ======================
+              /* ======================
                    PIN CLICK
 
                    Select barangay.
                    Icon remains unchanged.
                 ====================== */
 
-                click: () => {
-                  onSelectBarangay(
-                    marker.id
-                  )
+              click: () => {
+                onSelectBarangay(marker.id);
 
-                  onHoverBarangay?.(
-                    null
-                  )
-                },
-              }}
+                onHoverBarangay?.(null);
+              },
+            }}
+          >
+            <Tooltip
+              direction="top"
+              offset={[0, -8]}
+              opacity={1}
+              className="crime-map-tooltip"
             >
-              <Tooltip
-                direction="top"
-                offset={[
-                  0,
-                  -8,
-                ]}
-                opacity={1}
-                className="crime-map-tooltip"
-              >
-                <div className="min-w-[150px] leading-5">
+              <div className="min-w-[150px] leading-5">
+                {/* Barangay */}
 
-                  {/* Barangay */}
+                <div className="flex items-center gap-1.5">
+                  <span
+                    className="h-2 w-2 shrink-0 rounded-full"
+                    style={{
+                      backgroundColor: baseColor,
+                    }}
+                  />
 
-                  <div className="flex items-center gap-1.5">
-
-                    <span
-                      className="h-2 w-2 shrink-0 rounded-full"
-                      style={{
-                        backgroundColor:
-                          baseColor,
-                      }}
-                    />
-
-                    <span className="text-[13px] font-bold text-[#3b1419]">
-                      {
-                        marker.name
-                      }
-                    </span>
-
-                  </div>
-
-                  {/* Crime */}
-
-                  <div className="mb-1 mt-0.5 text-[11px] font-medium text-[#766064]">
-                    {
-                      selectedCrimeName
-                    }
-                  </div>
-
-                  {/* Cases */}
-
-                  <div>
-                    <strong
-                      className="text-sm"
-                      style={{
-                        color:
-                          baseColor,
-                      }}
-                    >
-                      {cases}
-                    </strong>
-
-                    {" "}
-
-                    <span className="text-[11px] text-[#5f5153]">
-                      recorded{" "}
-                      {
-                        cases === 1
-                          ? "case"
-                          : "cases"
-                      }
-                    </span>
-                  </div>
-
-                  {/* Reference Notice */}
-
-                  <div className="mt-1 border-t border-[#eadadd] pt-1 text-[10px] text-[#8b7377]">
-                    Barangay reference
-                    location
-                  </div>
-
+                  <span className="text-[13px] font-bold text-[#3b1419]">
+                    {marker.name}
+                  </span>
                 </div>
-              </Tooltip>
-            </Marker>
-          )
-        }
-      )}
+
+                {/* Crime */}
+
+                <div className="mb-1 mt-0.5 text-[11px] font-medium text-[#766064]">
+                  {selectedCrimeName}
+                </div>
+
+                {/* Cases */}
+
+                <div>
+                  <strong
+                    className="text-sm"
+                    style={{
+                      color: baseColor,
+                    }}
+                  >
+                    {cases}
+                  </strong>{" "}
+                  <span className="text-[11px] text-[#5f5153]">
+                    recorded {cases === 1 ? "case" : "cases"}
+                  </span>
+                </div>
+
+                {/* Reference Notice */}
+
+                <div className="mt-1 border-t border-[#eadadd] pt-1 text-[10px] text-[#8b7377]">
+                  Barangay reference location
+                </div>
+              </div>
+            </Tooltip>
+          </Marker>
+        );
+      })}
     </>
-  )
+  );
 }
 
 /* ==================================
@@ -1390,116 +896,74 @@ function BarangayPins({
 function CrimeLegend({
   selectedCrimeId,
   selectedCrimeName,
-}: Pick<
-  CrimeMapProps,
-  | "selectedCrimeId"
-  | "selectedCrimeName"
->) {
-  const baseColor =
-    getCrimeBaseColor(
-      selectedCrimeId
-    )
+}: Pick<CrimeMapProps, "selectedCrimeId" | "selectedCrimeName">) {
+  const baseColor = getCrimeBaseColor(selectedCrimeId);
 
-  const isAll =
-    selectedCrimeId ===
-    "all"
+  const isAll = selectedCrimeId === "all";
 
-  const legendItems =
-    isAll
-      ? [
-          {
-            label:
-              "No cases",
+  const legendItems = isAll
+    ? [
+        {
+          label: "No cases",
 
-            color:
-              "#f1e7e8",
-          },
+          color: "#f1e7e8",
+        },
 
-          {
-            label:
-              "Low",
+        {
+          label: "Low",
 
-            color:
-              "#f6d98d",
-          },
+          color: "#f6d98d",
+        },
 
-          {
-            label:
-              "Moderate",
+        {
+          label: "Moderate",
 
-            color:
-              "#e7a65b",
-          },
+          color: "#e7a65b",
+        },
 
-          {
-            label:
-              "High",
+        {
+          label: "High",
 
-            color:
-              "#b84a58",
-          },
+          color: "#b84a58",
+        },
 
-          {
-            label:
-              "Highest",
+        {
+          label: "Highest",
 
-            color:
-              "#7a1f2b",
-          },
-        ]
-      : [
-          {
-            label:
-              "No cases",
+          color: "#7a1f2b",
+        },
+      ]
+    : [
+        {
+          label: "No cases",
 
-            color:
-              "#f1e7e8",
-          },
+          color: "#f1e7e8",
+        },
 
-          {
-            label:
-              "Low",
+        {
+          label: "Low",
 
-            color:
-              mixColors(
-                baseColor,
-                "#ffffff",
-                0.72
-              ),
-          },
+          color: mixColors(baseColor, "#ffffff", 0.72),
+        },
 
-          {
-            label:
-              "Moderate",
+        {
+          label: "Moderate",
 
-            color:
-              mixColors(
-                baseColor,
-                "#ffffff",
-                0.48
-              ),
-          },
+          color: mixColors(baseColor, "#ffffff", 0.48),
+        },
 
-          {
-            label:
-              "High",
+        {
+          label: "High",
 
-            color:
-              mixColors(
-                baseColor,
-                "#ffffff",
-                0.22
-              ),
-          },
+          color: mixColors(baseColor, "#ffffff", 0.22),
+        },
 
-          {
-            label:
-              "Highest",
+        {
+          label: "Highest",
 
-            color:
-              baseColor,
-          },
-        ]
+          color: baseColor,
+        },
+      ];
 
   return (
     <div
@@ -1539,21 +1003,16 @@ function CrimeLegend({
 
         {!isAll && (
           <div className="mt-1 flex items-center gap-1.5">
-
             <span
               className="h-2 w-2 shrink-0 rounded-full"
               style={{
-                backgroundColor:
-                  baseColor,
+                backgroundColor: baseColor,
               }}
             />
 
             <span className="truncate text-[9px] font-medium text-[#766064]">
-              {
-                selectedCrimeName
-              }
+              {selectedCrimeName}
             </span>
-
           </div>
         )}
       </div>
@@ -1561,67 +1020,43 @@ function CrimeLegend({
       {/* Legend Items */}
 
       <div className="space-y-1.5 p-2.5 text-[10px] sm:p-3 sm:text-xs">
+        {legendItems.map((item) => (
+          <div key={item.label} className="flex items-center gap-2">
+            <span
+              className="h-3 w-3 shrink-0 rounded-sm border border-black/5"
+              style={{
+                backgroundColor: item.color,
+              }}
+            />
 
-        {legendItems.map(
-          (item) => (
-            <div
-              key={
-                item.label
-              }
-              className="flex items-center gap-2"
-            >
-              <span
-                className="h-3 w-3 shrink-0 rounded-sm border border-black/5"
-                style={{
-                  backgroundColor:
-                    item.color,
-                }}
-              />
-
-              <span className="text-[#5f5153]">
-                {
-                  item.label
-                }
-              </span>
-
-            </div>
-          )
-        )}
+            <span className="text-[#5f5153]">{item.label}</span>
+          </div>
+        ))}
 
         {/* Selected */}
 
         <div className="mt-2 border-t border-[#eadadd] pt-2">
-
           <div className="flex items-center gap-2">
-
             <span
               className="h-3 w-3 shrink-0 rounded-sm bg-white"
               style={{
-                border:
-                  "2px solid #d3a337",
+                border: "2px solid #d3a337",
               }}
             />
 
-            <span className="font-medium text-[#704a00]">
-              Selected
-            </span>
-
+            <span className="font-medium text-[#704a00]">Selected</span>
           </div>
-
         </div>
-
       </div>
     </div>
-  )
+  );
 }
 
 /* ==================================
    MAIN CRIME MAP
 ================================== */
 
-export function CrimeMap(
-  props: CrimeMapProps
-) {
+export function CrimeMap(props: CrimeMapProps) {
   /*
    * This state controls ONLY
    * polygon visibility.
@@ -1630,12 +1065,9 @@ export function CrimeMap(
    * marker animation.
    */
 
-  const [
-    hoveredBarangay,
-    setHoveredBarangay,
-  ] = useState<
-    BarangayId | null
-  >(null)
+  const [hoveredBarangay, setHoveredBarangay] = useState<BarangayId | null>(
+    null,
+  );
 
   /*
    * When another crime is selected,
@@ -1643,12 +1075,8 @@ export function CrimeMap(
    */
 
   useEffect(() => {
-    setHoveredBarangay(
-      null
-    )
-  }, [
-    props.selectedCrimeId,
-  ])
+    setHoveredBarangay(null);
+  }, [props.selectedCrimeId]);
 
   return (
     <div
@@ -1668,61 +1096,52 @@ export function CrimeMap(
       "
     >
       <MapContainer
-        center={[
-          14.68,
-          120.27,
-        ]}
+        center={[14.68, 120.27]}
         zoom={12}
         minZoom={10}
         maxZoom={18}
         scrollWheelZoom
         className="h-full w-full"
       >
-        <TileLayer
-          attribution="&copy; OpenStreetMap contributors"
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
+        <LayersControl position="topright">
+          {/* Normal street map */}
+          <LayersControl.BaseLayer checked name="Street Map">
+            <TileLayer
+              attribution="&copy; OpenStreetMap contributors"
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+          </LayersControl.BaseLayer>
+
+          {/* Satellite map */}
+          <LayersControl.BaseLayer name="Satellite">
+            <TileLayer
+              attribution="Tiles &copy; Esri"
+              url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
+            />
+          </LayersControl.BaseLayer>
+        </LayersControl>
 
         <MapResizeHandler />
 
         {/* Barangay Polygons */}
 
-        <MorongPolygons
-          {...props}
-
-          hoveredBarangay={
-            hoveredBarangay
-          }
-        />
+        <MorongPolygons {...props} hoveredBarangay={hoveredBarangay} />
 
         {/* Crime Pins */}
 
         <BarangayPins
           {...props}
-
-          hoveredBarangay={
-            hoveredBarangay
-          }
-
-          onHoverBarangay={
-            setHoveredBarangay
-          }
+          hoveredBarangay={hoveredBarangay}
+          onHoverBarangay={setHoveredBarangay}
         />
-
       </MapContainer>
 
       {/* Map Legend */}
 
       <CrimeLegend
-        selectedCrimeId={
-          props.selectedCrimeId
-        }
-
-        selectedCrimeName={
-          props.selectedCrimeName
-        }
+        selectedCrimeId={props.selectedCrimeId}
+        selectedCrimeName={props.selectedCrimeName}
       />
-
     </div>
-  )
+  );
 }
