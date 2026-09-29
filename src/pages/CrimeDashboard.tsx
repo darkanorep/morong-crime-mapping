@@ -40,6 +40,8 @@ export type BarangayId =
   | "sabang"
   | "nagbalayong";
 
+export type ReportingYear = "2024" | "2025" | "2026";
+
 /* ----------------------------------
    Crime Categories
 ----------------------------------- */
@@ -255,13 +257,16 @@ function App() {
   --------------------------------- */
 
   const handleCrimeChange = (crimeId: string) => {
+    // Select the new crime
     setSelectedCrimeId(crimeId);
 
-    /*
-     * Close an existing modal when
-     * changing crime.
-     */
+    // Reset selected barangay
+    setSelectedBarangay(null);
 
+    // This also removes the persistent
+    // selected polygon highlight from the map.
+
+    // Close any open Crime Details modal
     setCrimeDetailsOpen(false);
   };
 
@@ -270,7 +275,21 @@ function App() {
   --------------------------------- */
 
   const handleCategoryChange = (category: CrimeCategory) => {
+    // Change category
     setSelectedCategory(category);
+
+    // Reset selected crime
+    setSelectedCrimeId("all");
+
+    // Reset selected barangay
+    setSelectedBarangay(null);
+
+    // Reset highlighted map polygon
+    // selectedBarangay=null automatically clears
+    // the selected polygon in CrimeMap.
+
+    // Close Crime Details modal
+    setCrimeDetailsOpen(false);
   };
 
   /* --------------------------------
@@ -641,17 +660,20 @@ hover:shadow-lg"
                 const hasNoCases = selectedCrime !== null && cases === 0;
 
                 return (
-  <button
-    key={barangay.id}
-    type="button"
-    onClick={() => handleSidebarBarangaySelect(id)}
-    aria-pressed={isSelected}
-    className={`
+                  <button
+                    key={barangay.id}
+                    type="button"
+                    onClick={() => handleSidebarBarangaySelect(id)}
+                    aria-pressed={isSelected}
+                    disabled={hasNoCases}
+                    className={`
       group relative w-full overflow-hidden
       rounded-xl border px-3 py-3 text-left
       transition-all duration-200
       focus:outline-none focus:ring-2
       focus:ring-ring focus:ring-offset-2
+      disabled:cursor-not-allowed
+disabled:opacity-50
       sm:px-4
 
       ${
@@ -662,18 +684,18 @@ hover:shadow-lg"
             : "border-border bg-white hover:border-primary/30 hover:bg-[#fff8f8] hover:shadow-sm"
       }
     `}
-  >
-    {/* Gold selected accent */}
-    {isSelected && (
-      <div className="absolute inset-y-0 left-0 w-1 bg-[#e7b84b]" />
-    )}
+                  >
+                    {/* Gold selected accent */}
+                    {isSelected && (
+                      <div className="absolute inset-y-0 left-0 w-1 bg-[#e7b84b]" />
+                    )}
 
-    <div className="flex items-center justify-between gap-3">
-      {/* Logo + Barangay Information */}
-      <div className="flex min-w-0 items-center gap-3">
-        {/* Barangay Logo */}
-        <div
-          className={`
+                    <div className="flex items-center justify-between gap-3">
+                      {/* Logo + Barangay Information */}
+                      <div className="flex min-w-0 items-center gap-3">
+                        {/* Barangay Logo */}
+                        <div
+                          className={`
             flex h-12 w-12 shrink-0
             items-center justify-center
             overflow-hidden rounded-full
@@ -690,23 +712,23 @@ hover:shadow-lg"
                   : "border-[#eadadd]"
             }
           `}
-        >
-          <img
-            src={barangayLogos[id]}
-            alt={`${barangay.name} barangay logo`}
-            className="
+                        >
+                          <img
+                            src={barangayLogos[id]}
+                            alt={`${barangay.name} barangay logo`}
+                            className="
               h-full w-full object-contain
               transition-transform duration-300
               group-hover:scale-110
             "
-            loading="lazy"
-          />
-        </div>
+                            loading="lazy"
+                          />
+                        </div>
 
-        {/* Name + Case Description */}
-        <div className="min-w-0">
-          <p
-            className={`
+                        {/* Name + Case Description */}
+                        <div className="min-w-0">
+                          <p
+                            className={`
               break-words text-sm font-semibold
               sm:text-base
 
@@ -718,34 +740,30 @@ hover:shadow-lg"
                     : "text-foreground"
               }
             `}
-          >
-            {barangay.name}
-          </p>
+                          >
+                            {barangay.name}
+                          </p>
 
-          <p
-            className={`
+                          <p
+                            className={`
               mt-1 text-[11px]
               sm:text-xs
 
-              ${
-                isSelected
-                  ? "text-white/70"
-                  : "text-muted-foreground"
-              }
+              ${isSelected ? "text-white/70" : "text-muted-foreground"}
             `}
-          >
-            {cases === 0
-              ? "No recorded cases"
-              : cases === 1
-                ? "1 recorded case"
-                : `${cases} recorded cases`}
-          </p>
-        </div>
-      </div>
+                          >
+                            {cases === 0
+                              ? "No recorded cases"
+                              : cases === 1
+                                ? "1 recorded case"
+                                : `${cases} recorded cases`}
+                          </p>
+                        </div>
+                      </div>
 
-      {/* Case Count */}
-      <span
-        className={`
+                      {/* Case Count */}
+                      <span
+                        className={`
           shrink-0 rounded-full
           px-2.5 py-1
           text-sm font-bold
@@ -758,12 +776,12 @@ hover:shadow-lg"
                 : "bg-[#f8edef] text-primary"
           }
         `}
-      >
-        {cases}
-      </span>
-    </div>
-  </button>
-);
+                      >
+                        {cases}
+                      </span>
+                    </div>
+                  </button>
+                );
               })}
             </CardContent>
           </Card>
@@ -858,6 +876,7 @@ hover:shadow-lg"
                   selectedBarangay={selectedBarangay}
                   onSelectBarangay={handleMapBarangaySelect}
                   getBarangayTotal={getMapBarangayTotal}
+                  selectedCrimeId={selectedCrimeId}
                   selectedCrimeName={selectedCrime?.name ?? "All Loaded Crimes"}
                 />
               </Reveal>
@@ -877,14 +896,29 @@ hover:shadow-lg"
         </Reveal>
 
         {/* ================================
-            Crime Details Modal
-        ================================= */}
+    Crime Details Modal
+================================= */}
 
         <CrimeDetails
           selectedCrimeId={selectedCrimeId}
           selectedBarangay={selectedBarangay}
           open={crimeDetailsOpen}
-          onOpenChange={setCrimeDetailsOpen}
+          onOpenChange={(open) => {
+            setCrimeDetailsOpen(open);
+
+            /*
+             * When the Crime Details modal
+             * is closed, also clear the
+             * selected barangay.
+             *
+             * This removes the selected
+             * polygon highlight and resets
+             * the barangay selection.
+             */
+            if (!open) {
+              setSelectedBarangay(null);
+            }
+          }}
         />
 
         {/* ================================
