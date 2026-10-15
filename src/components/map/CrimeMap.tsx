@@ -421,7 +421,7 @@ function MorongPolygons({
           return "#e7a65b";
 
         case "low":
-          return "#f6d98d";
+          return "#3922e8";
 
         default:
           return "#f1e7e8";
@@ -1057,7 +1057,7 @@ function CrimeLegend({
         },
         {
           label: "Low",
-          color: "#f6d98d",
+          color: "#4427ea",
         },
         {
           label: "Moderate",
