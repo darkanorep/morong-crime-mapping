@@ -97,9 +97,9 @@ const barangayPinDelay: Record<BarangayId, number> = {
 const crimeColors: Record<string, string> = {
   /* INDEX CRIMES */
 
-  robbery: "#dc2626",
+  robbery: "#2629dc",
 
-  "robbery-with-homicide": "#7f1d1d",
+  "robbery-with-homicide": "#1624e8",
 
   theft: "#2563eb",
 
