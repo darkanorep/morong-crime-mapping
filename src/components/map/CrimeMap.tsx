@@ -117,7 +117,7 @@ const crimeColors: Record<string, string> = {
 
   "frustrated-homicide": "#f43f5e",
 
-  "grave-threats": "#ea580c",
+  "grave-threats": "#e55e15",
 
   "light-threats": "#f97316",
 
@@ -212,7 +212,7 @@ function mixColors(first: string, second: string, amount: number) {
 }
 
 function getCrimeBaseColor(crimeId: string) {
-  return crimeColors[crimeId] ?? "#7a1f2b";
+  return crimeColors[crimeId] ?? "#7a1f25";
 }
 
 /* ==================================
@@ -421,7 +421,7 @@ function MorongPolygons({
           return "#e7a65b";
 
         case "low":
-          return "#3922e8";
+          return "#c58888";
 
         default:
           return "#f1e7e8";
@@ -1057,7 +1057,7 @@ function CrimeLegend({
         },
         {
           label: "Low",
-          color: "#4427ea",
+          color: "#0c0ce2",
         },
         {
           label: "Moderate",
