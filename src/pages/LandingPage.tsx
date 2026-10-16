@@ -215,7 +215,7 @@ export default function LandingPage() {
               <p className="mt-5 max-w-2xl text-sm leading-7 text-white/80 sm:text-base sm:leading-8 lg:text-lg">
                 An interactive crime statistics and geographic visualization
                 system for the five barangays of Morong, Bataan, covering the
-                loaded reporting period from 2024 to 2026.
+                loaded reporting period from 2026 to 2026.
               </p>
             </Reveal>
 

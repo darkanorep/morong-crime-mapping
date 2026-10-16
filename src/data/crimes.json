@@ -368,7 +368,7 @@
       "id": "direct-assaults",
       "name": "Direct Assaults",
       "category": "non-index-crime",
-      "yearly": { "2026": 0, "2026": 1, "2026": 0 },
+      "yearly": { "2026": 5, "2026": 1, "2026": 2},
       "barangays": {
         "poblacion": 0,
         "mabayo": 1,
