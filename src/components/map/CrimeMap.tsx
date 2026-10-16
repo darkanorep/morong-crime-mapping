@@ -421,7 +421,7 @@ function MorongPolygons({
           return "#e7a65b";
 
         case "low":
-          return "#da19d4";
+          return "#2919da";
 
         default:
           return "#f1e7e8";
