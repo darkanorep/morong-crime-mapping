@@ -370,13 +370,13 @@
       "category": "non-index-crime",
       "yearly": { "2026": 5, "2026": 1, "2026": 2},
       "barangays": {
-        "poblacion": 0,
+        "poblacion": 3,
         "mabayo": 1,
-        "binaritan": 0,
-        "sabang": 0,
-        "nagbalayong": 0
+        "binaritan": 2,
+        "sabang": 1,
+        "nagbalayong": 1
       },
-      "total": 1
+      "total": 8
     },
     {
       "id": "land-transportation-and-traffic-code",
