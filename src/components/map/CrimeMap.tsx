@@ -412,7 +412,7 @@ function MorongPolygons({
     if (selectedCrimeId === "all") {
       switch (intensity) {
         case "highest":
-          return "#7a1f2b";
+          return "#291a02";
 
         case "high":
           return "#b84a58";
